@@ -1,53 +1,139 @@
 <html>
-	<head>
+    <head>
         <title>Donation Form</title>
-        <!-- padding-left: 25rem; -->
-    </head>
-    <body style="text-align:center; margin-top: 150px; margin-bottom: 300px; background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);">
-        <div class="contact" style="display: flex; align-items: center; justify-content: center;" >
-            <div class="contact-box" style=" width:50%; border:black; border-width:3px; border-style:solid;">
+        <style>
+        body{
+             margin-top: 150px; 
+             margin-bottom: 300px; 
+             background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%)
+        }
 
-                <h1 style="font-size: 3rem;"> Make Donations Now!!! </h1>
-                <hr style="width:30%;">
+        /*GOAL*/
+        .goal{
+           padding-left: 8rem; 
+           width: 60%;
+           transform: translate(0%,10%);
+        }
+
+
+        .goal .goal-container meter{
+            width:50%;
+            height: 2rem;
+        }
+
+        /*donate*/
+
+        .donate{
+            text-align:center;
+        }
+
+       .donate .donate-container{
+            display: flex; 
+            transform: translate(50%,-30%);
+        }
+
+        .donate .donate-container .donate-box{
+            width:35%;
+            border:black; 
+            border-width:3px; 
+            border-style:solid;
+        }
+
+        .donate-container .donate-box h1{
+         font-size: 3rem;   
+         }
+
+        .donate-container .donate-box hr{
+        width:30%;
+        }
+
+        .donate-container .donate-box #amount_actual{
+         width:35%;   
+        }
+
+        /*donor*/
+
+        .donor label{
+        font-weight: 900;     
+        } 
+
+        .donate-container .donor #name, #email {
+        width:50% ;  
+        }
+
+       /* .donate-container .donor #email{
+        width:50% ;  
+        }
+        */
+
+        .donate-container .donor #message{
+        width:50% ;  
+        height:8rem;
+        }
+
+        </style>
+    </head>
+    <body>
+        <!-- rleft-->
+        <div class="goal">
+            <div class="goal-container" >
+                <h1> Project Malasakit </h1>
+                <h3> Make Donations Now</h3>   
                 <br>
-                <form>
-                   <h3>Amount</h3>
-                    <input type="radio" id="100" name="amount"  value="100" required>
-                    <label for="100"> &#8369; 100</label>
-                    <input type="radio" id=3300" name="amount" value="300" >
-                    <label for="100"> &#8369; 300</label>
-                    <!-- <br>
-                    <input type="radio" id="500" name="amount" value="500">
-                    <label for="500"> &#8369; 500</label>
-                    <input type="radio" id="1000" name="amount" value="1000" >
-                    <label for="1000"> &#8369; 1000</label>
-                    <br>
-                    <input type="radio" id="1000" name="amount" value="1000">
-                    <label for="others"> others </label>
-                    <br>
-                    <input placeholder="Amount" type="number" id="amount_actual" name="amount" maxlength="6" min="100"style="width:14rem;">
-                <br>
-                <br>
-                    <label style="font-weight: 900;" for="name"> Name:</label>
-                    <br>
-                    <br>
-                    <input type="name" id="name" name="name" placeholder="Name" style="width:20rem;"required>
-                <br>
-                <br>
-                    <label style="font-weight: 900;" for="email"> Email:</label>
-                    <br>
-                    <br>
-                    <input type="email" id="email" name="email" placeholder="input valid email.." style="width:20rem;"required>
-                <br>
-                <br>
-                    <label style="font-weight: 900;" for="message">Message:</label>
-                    <br>
-                    <textarea id="message" name="message" placeholder="Write something... (optional)" rows=15 style="height:8rem; width:20rem;"></textarea>
-                <br>
-                <br> -->
-                    <input type="submit"  id="btnSend" value="Donate">
-                </form>
+                <p id="p1"> Raised</p> 
+                <meter id="disk_c" value="x" min="0" max="100000"></meter>
+                <p id="p2" > Goal </p>
             </div>
-    	</div>
+        </div>
+
+        <!-- righ panel -->
+        <div class="donate">         
+            <div class="donate-container">
+                <div class="donate-box">
+                    <h2> Donation Form </h2>
+                    <hr>
+                    <br>
+                    <form>
+                        <h3 id="hA" >Amount</h3>
+                       <input type="radio" id="100" name="amount"  value="100" required>
+                        <label for="100"> &#8369; 100</label>
+                        <input type="radio" id=300" name="amount" value="300" >
+                        <label for="100"> &#8369; 300</label>
+                        <br>
+                        <input type="radio" id="500" name="amount" value="500">
+                        <label for="500"> &#8369; 500</label>
+                        <input type="radio" id="1000" name="amount" value="1000" >
+                        <label for="1000"> &#8369; 1000</label>
+                        <br>
+                        <input type="radio" id="1000" name="amount" value="1000">
+                        <label for="others"> others </label>
+                        <br>
+                        <input placeholder="Amount" type="number" id="amount_actual" name="amount" maxlength="6" min="100">
+                    <br>
+                    <br>
+                    <div class="donor">
+                            <label for="name"> Name:</label>
+                            <br>
+                            <br>
+                            <input type="name" id="name" name="name" placeholder="Your name.."required>
+                        <br>
+                        <br>
+                            <label for="email"> Email:</label>
+                            <br>
+                            <br>
+                            <input type="email" id="email" name="email" placeholder="input valid email.."required>
+                        <br>
+                        <br>
+                            <label for="message">Message:</label>
+                            <br>
+                            <textarea id="message" name="message" placeholder="Write something... (optional)" rows=15 ></textarea>
+                        <br>
+                        <br>
+                     </div>   
+                        <input type="submit"  id="btnDonate" value="Donate">
+                    </form>
+                </div>
+            </div>
+        </div>    
     </body>
 </html>
