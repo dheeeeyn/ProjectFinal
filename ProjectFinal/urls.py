@@ -1,8 +1,8 @@
 from django.conf.urls import url 
-from CharityApp import views
+from VApp import views
 
 urlpatterns = [
-    url(r'^$', views.DonationForm, name='donationform'),
+    url(r'^$', views.VolunteerForm, name='volunteerform'),
 ]
 
 

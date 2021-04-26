@@ -4,7 +4,7 @@ import unittest
 from selenium.webdriver.common.keys import Keys
 import time
 
-class DonationForm(unittest.TestCase):
+class VolunteerForm(unittest.TestCase):
 
 	def setUp(self):
 		self.browser = webdriver.Firefox()
@@ -14,46 +14,35 @@ class DonationForm(unittest.TestCase):
 
 	# def test_browser_title(self):
 	# 	self.browser.get('http://localhost:8000')
-	# 	self.assertIn('Donation Form', self.browser.title)
+	# 	self.assertIn('VOLUNTEER', self.browser.title)
 	# 	#self.fail('Finish the test noww')
 
 	def test_start_list_and_retrive_it(self):
 		self.browser.get('http://localhost:8000')
-		self.assertIn('Donation Form', self.browser.title)
+		self.assertIn('VOLUNTEER', self.browser.title)
 		headerText = self.browser.find_element_by_tag_name('h1').text
-		headerText2 = self.browser.find_element_by_tag_name('h3').text
-		paragraph = self.browser.find_element_by_id("p1").text
-		paragraph2 = self.browser.find_element_by_id("p2").text
-		headerText3 = self.browser.find_element_by_tag_name('h2').text
-		headerText4 = self.browser.find_element_by_id("hA").text
-		self.assertIn('Project Malasakit', headerText)
-		self.assertIn('Make Donations Now', headerText2) 
-		self.assertIn('Raised', paragraph)
-		self.assertIn('Goal', paragraph2) 
-		self.assertIn('Donation Form', headerText3)
-		self.assertIn('Amount', headerText4)
-		#Amount
-		btnAmount = self.browser.find_element_by_id('1000')
-		#Contact
-		inputName = self.browser.find_element_by_id('name')
-		inputEmail = self.browser.find_element_by_id('email')
-		inputMessage = self.browser.find_element_by_id('message')
-		btnSubmit = self.browser.find_element_by_id('btnDonate')
-		self.assertEqual(inputName.get_attribute('placeholder'),'Your name..')
-		self.assertEqual(inputEmail.get_attribute('placeholder'),'input valid email..')
-		self.assertEqual(inputMessage.get_attribute('placeholder'),'Write something... (optional)')
-		btnSubmit.click() # to check if the required attribute in html is working
-		self.assertEqual(btnAmount.get_attribute('value'),'1000')
+		self.assertIn('Be one of Us!', headerText)
+		#info
+		inputFName = self.browser.find_element_by_id('Fname')
+		inputLName = self.browser.find_element_by_id('Lname')
+		inputMAddress = self.browser.find_element_by_id('Maddress')
+		inputCAddress = self.browser.find_element_by_id('Caddress')
+		btnReg = self.browser.find_element_by_id('btnRegister')
+		self.assertEqual(inputFName.get_attribute('placeholder'),'Your first name')
+		self.assertEqual(inputLName.get_attribute('placeholder'),'Your last name')
+		self.assertEqual(inputMAddress.get_attribute('placeholder'),'Municipality')
+		self.assertEqual(inputCAddress.get_attribute('placeholder'),'City')
+		btnReg.click() # to check if the required attribute in html is working
 		time.sleep(3)
-		btnAmount.click()
-		time.sleep(3)
-		inputName.send_keys('danene')
+		inputFName.send_keys('danene')
 		time.sleep(2)
-		inputEmail.send_keys('danene@gmail.com')
+		inputLName.send_keys('kyuti')
 		time.sleep(2)
-		inputMessage.send_keys('PAPASA AKO SA WEBDEV2')
+		inputMAddress.send_keys('Dasma')
 		time.sleep(2)
-		btnSubmit.click()
+		inputCAddress.send_keys('Cavite')
+		time.sleep(2)
+		btnReg.click()
 		time.sleep(2)
 
 if __name__ == '__main__':
