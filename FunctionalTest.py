@@ -33,7 +33,7 @@ class VolunteerForm(unittest.TestCase):
 		self.assertEqual(inputMAddress.get_attribute('placeholder'),'Municipality')
 		self.assertEqual(inputCAddress.get_attribute('placeholder'),'City')
 		btnReg.click() # to check if the required attribute in html is working
-		time.sleep(3)
+		time.sleep(2)
 		inputFName.send_keys('danene')
 		time.sleep(2)
 		inputLName.send_keys('kyuti')
@@ -43,7 +43,9 @@ class VolunteerForm(unittest.TestCase):
 		inputCAddress.send_keys('Cavite')
 		time.sleep(2)
 		btnReg.click()
-		time.sleep(2)
+		time.sleep(4)
+
+		table = self.browser.find_element_by_id('info_list_table')
 
 if __name__ == '__main__':
 	unittest.main(warnings='ignore')

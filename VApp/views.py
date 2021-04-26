@@ -1,10 +1,30 @@
 from django.shortcuts import render
 #from django.http import HttpResponse
 
-def VolunteerForm(request):
-	return render(request,'volunteerform.html')
 
-# Create your views here.
+def VolunteerForm(request):
+	return render(request, 'volunteerform.html', {'firstName': request.POST.get('Fname'),'lastName': request.POST.get('Lname',''),})
+
+
+
+# def VolunteerForm(request):
+# 	return render(request, 'volunteerform.html', {'firstName': request.POST['Fname'],})
+
+
+# def VolunteerForm(request):
+# 	return render(request,'volunteerform.html',{'firstName':request.POST.get('Fname'),'lastName':request.POST.get('Lname',''),})
+
+
+ 
+# def VolunteerForm(request):
+# 	if request.method == 'POST':
+# 		return HttpResponse(request.POST['Fname'])
+# 	return render(request, 'volunteerform.html')
+
+# def VolunteerForm(request):
+# 	return render(request,'volunteerform.html')
+
+
 # VolunteerForm = None
 # def VolunteerForm(request):
 # 	# pass

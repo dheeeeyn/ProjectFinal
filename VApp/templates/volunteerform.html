@@ -7,7 +7,7 @@
         <div class="volunteer">         
             <div class="volunteer-container">
                 <div class="volunteer-box">
-                    <form>
+                    <form method="POST">
                         <label for="name"> Name:</label>
                         <br>
                         <input type="text" id="Fname" name="Fname" placeholder="Your first name" required>
@@ -22,9 +22,19 @@
                         <br>
                          </div>   
                             <input type="submit"  id="btnRegister" value="Register">
+                        {% csrf_token %}
                     </form>
                 </div>
             </div>
-        </div>    
+        </div>  
+
+        <div class="InfoTable">
+            <table id="info_list_table" name="info_list_table">
+                <tr>
+                    <td>{{ firstName }}</td>
+                    <td>{{ lastName}}</td>
+                </tr>
+        </div>
+
     </body>
 </html>

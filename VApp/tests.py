@@ -11,6 +11,11 @@ class VolunteerFormTest(TestCase):
 	def test_VolunteerForm_returns_correct_view(self):
 		response = self.client.get ('/')
 		self.assertTemplateUsed(response,'volunteerform.html')
+ 
+	def test_can_save_a_POST_request(self):
+		response = self.client.post('/', data={'Fname': 'firstName'})
+		self.assertIn('firstName', response.content.decode())
+		self.assertTemplateUsed(response, 'volunteerform.html')
 
 	# def test_root_url_resolves_to_volunteerfrom_views(self):
 	# 	found = resolve ('/')
