@@ -2,24 +2,23 @@ from django.shortcuts import render
 #from django.http import HttpResponse
 
 
+#try
 def VolunteerForm(request):
-	return render(request, 'volunteerform.html', {'firstName': request.POST.get('Fname'),'lastName': request.POST.get('Lname',''),})
+	return render(request, 'volunteerform.html', {'vInterest': request.POST.get('Vinterest'),'dSched': request.POST.get('Dsched'),'tSched': request.POST.get('Tsched'''),})
 
+#orig
+# def VolunteerForm(request):
+# 	return render(request, 'volunteerform.html', {'firstName': request.POST.get('Fname'),'lastName': request.POST.get('Lname'),'Municipality': request.POST.get('Maddress'),'City': request.POST.get('Caddress',''),})
 
 
 # def VolunteerForm(request):
-# 	return render(request, 'volunteerform.html', {'firstName': request.POST['Fname'],})
+# 	return render(request, 'volunteerform.html', {'vInterest: request.POST['Vinterest'],})
 
-
-# def VolunteerForm(request):
-# 	return render(request,'volunteerform.html',{'firstName':request.POST.get('Fname'),'lastName':request.POST.get('Lname',''),})
-
-
- 
 # def VolunteerForm(request):
 # 	if request.method == 'POST':
-# 		return HttpResponse(request.POST['Fname'])
+# 		return HttpResponse(request.POST['Vinterest'])
 # 	return render(request, 'volunteerform.html')
+
 
 # def VolunteerForm(request):
 # 	return render(request,'volunteerform.html')

@@ -10,31 +10,121 @@
                     <form method="POST">
                         <label for="name"> Name:</label>
                         <br>
-                        <input type="text" id="Fname" name="Fname" placeholder="Your first name" required>
+                        <input type="text" id="Fname" name="Fname" placeholder="Your first name">
                         <input type="text" id="Lname" name="Lname" placeholder="Your last name" >
                         <br>
                         <br>
                         <label for="address"> Address</label>
                         <br>
-                        <input type="text" id="Maddress" name="Maddress" placeholder="Municipality"required>
-                        <input type="text" id="Caddress" name="Caddress" placeholder="City"required>
+                        <input type="text" id="Maddress" name="Maddress" placeholder="Municipality">
+                        <input type="text" id="Caddress" name="Caddress" placeholder="City">
                         <br>
                         <br>
-                         </div>   
-                            <input type="submit"  id="btnRegister" value="Register">
+
+                        <!-- next page -->
+                        <label for="VInterest"> Volunteer Interest </label>
+                        <br>
+                        <input type="text" id="Vinterest" name="Vinterest" placeholder="(Ex. Event Organizer, Repacking Team, Researcher)" required>
+                        <br>
+
+                        <label for="Dsched"> Available Schedule</label>
+                        <br>
+                        <input type="type" id="Dsched" name="Dsched" placeholder="(Monday, Wednesday, Friday, Sunday ONLY)" required>
+                        <br>
+
+                        <label for="Tsched"> Choose your Shift</label>
+                        <br>
+                        <input type="text" id="Tsched" name="Tsched" placeholder="First Shift(7:00 am - 11:00 pm)/ Second Shift(1:00 pm- 5:00 pm)" required>
+                        <br>
+                         <input type="submit"  id="btnRegister" value="Register">
                         {% csrf_token %}
                     </form>
                 </div>
             </div>
         </div>  
 
-        <div class="InfoTable">
-            <table id="info_list_table" name="info_list_table">
+
+        <div class="V_Info_Table">
+            <table id="v_info_list_table" name="v_info_list_table">
+
                 <tr>
-                    <td>{{ firstName }}</td>
-                    <td>{{ lastName}}</td>
+                      <th> Volunteer Interest</th>
+                      <th> Schedule </th>
+                     <th> Time </th>
+
                 </tr>
+
+          
+                <tr>
+                    <td>1: {{ vInterest }}</td>
+                    <td> {{ dSched}} </td>
+                    <td> {{tSched}} </td>
+                </tr>
+            </table>
         </div>
 
+<!--         <div class="InfoTable">
+            <table id="info_list_table" name="info_list_table">                
+            <tr>
+            </tr> 
+             <th> Volunteer Interest</th>
+                <tr>
+                    <td>1: {{ firstName }}</td>
+                    <td>{{ lastName }}</td>
+                    <td>lives at</td>
+                     <td>{{ Municipality }}</td>
+                    <td>{{ City }}</td>
+                </tr>
+        </div>
+ -->
     </body>
 </html>
+
+
+
+          <!-- <label for="search"> Volunteer interest</label>
+                        <br>
+                        <input type="radio" id="search" name="VInterest">
+                        <label for="search">Researcher</label>
+                        <br>
+                        <input type="radio" id="eorganize" name="VInterest" value="Event Organizer">
+                        <label for="eorganize">Event Organizer</label>
+                        <br>
+                        <input type="radio" id="rteam" name="VInterest">
+                        <label for="rteam">Repacking Team</label>
+                        <br>
+                        <input type="radio" id="rteam" name="VInterest">
+                        <label for="dteam">Documentation Team</label>
+                        <br>
+                        <label for="others"> others:</label>
+                        <br>
+                        <input placeholder="please specify..." type="text" id="other" name="amount">
+
+                        <br>
+                        <br>
+                        <label for="sched"> Choose your Available Schedule: </label>
+                        <br>
+                        <input type="radio" id="Mday" name="Mday">
+                        <label for="Mday">Monday</label>
+                        <br>
+                        <input type="radio" id="Wday" name="Wdaay">
+                        <label for="fday">Wednesday</label>
+                        <br>
+                        <input type="radio" id="Fday" name="Dday>
+                        <label for="fday">Friday</label>
+                         <br>
+                        <input type="radio" id="rteam" name="VInterest">
+                        <label for="fday">Sunday</label>
+                        <br>
+                        <br>
+
+                        <label for="2sched"> Choose your Available Shift: </label>
+                        <br>
+                        <br>
+                        <input type="radio" id="Fshift" name="Fshift">
+                        <label for="Fshift">First shift (7:00 am - 11:00 pm)</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="Sshift" name="Sshift">
+                        <label for="Sshift">Second Shift (1:00 pm - 5:00 pm)</label>
+                         <br> -->
