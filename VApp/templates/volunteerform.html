@@ -37,6 +37,7 @@
                         <input type="text" id="Tsched" name="Tsched" placeholder="First Shift(7:00 am - 11:00 pm)/ Second Shift(1:00 pm- 5:00 pm)" required>
                         <br>
                          <input type="submit"  id="btnRegister" value="Register">
+                         <input type="hidden">
                         {% csrf_token %}
                     </form>
                 </div>
@@ -46,20 +47,23 @@
 
         <div class="V_Info_Table">
             <table id="v_info_list_table" name="v_info_list_table">
-
                 <tr>
+             
                       <th> Volunteer Interest</th>
                       <th> Schedule </th>
-                     <th> Time </th>
-
-                </tr>
-
-          
+                      <th> Time </th>
+                </tr>    
+                      {% for item in vInterest %}
                 <tr>
+
+                       <td>{{ forloop.counter }}: {{ item.text }}</td>
+ <!--  
                     <td>1: {{ vInterest }}</td>
-                    <td> {{ dSched}} </td>
-                    <td> {{tSched}} </td>
+                  <td> {{ dSched }} </td>
+                    <td> {{ tSched }} </td> -->
+                 
                 </tr>
+                   {% endfor %}
             </table>
         </div>
 

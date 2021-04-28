@@ -83,7 +83,8 @@ class VolunteerForm(unittest.TestCase):
 		btnReg.click()
 		time.sleep(2)
 		#This page should update and show name on the list
-		self.check_rows_in_info_list_table('1: Event Organizer Monday First Shift')
+		# self.check_rows_in_info_list_table('1: Event Organizer Monday First Shift')		self.check_rows_in_info_list_table('1: Event Organizer Monday First Shift')
+		self.check_rows_in_info_list_table('1: Event Organizer')
 		#Vinfo2
 		inputInterest = self.browser.find_element_by_id('Vinterest')
 		inputschedD = self.browser.find_element_by_id('Dsched')
@@ -101,8 +102,8 @@ class VolunteerForm(unittest.TestCase):
 		inputschedT.click()
 		inputschedT.send_keys('Second Shift')
 		btnReg.click()
-		self.check_rows_in_info_list_table('2: Repacking Team Wednesday Second Shift')
-
+		# self.check_rows_in_info_list_table('2: Repacking Team Wednesday Second Shift')
+		self.check_rows_in_info_list_table('2: Repacking Team')
 		# table = self.browser.find_element_by_id('v_info_list_table')
 		# rows = table.find_elements_by_tag_name('tr')
 		# self.assertIn('Event organizer Monday First Shift', [row.text for row in rows])

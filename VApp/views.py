@@ -1,12 +1,46 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from VApp.models import Item
 #from django.http import HttpResponse
 
 
-#try
-def VolunteerForm(request):
-	return render(request, 'volunteerform.html', {'vInterest': request.POST.get('Vinterest'),'dSched': request.POST.get('Dsched'),'tSched': request.POST.get('Tsched'''),})
 
-#orig
+
+def VolunteerForm(request):
+	if request.method == 'POST':
+		Item.objects.create(text=request.POST['Vinterest'])
+		return redirect('/')
+	items = Item.objects.all()
+	return render(request, 'volunteerform.html',{'vInterest': items})
+
+
+# def VolunteerForm(request):
+# 	if request.method == 'POST':
+# 		Item.objects.create(text=request.POST['Vinterest'])
+# 		return redirect('/')
+# 	return render(request, 'volunteerform.html')
+
+
+
+# def VolunteerForm(request):
+# 	if request.method == 'POST':
+# 		newItem = request.POST['Vinterest']
+# 		Item.objects.create(text=newItem)
+# 	else:
+# 		newItem = ''
+# 	return render(request, 'volunteerform.html', {'vInterest': newItem,})
+
+
+# def VolunteerForm(request):
+# 	item = Item()
+# 	item.text = request.POST.get('Vinterest', '')
+# 	item.save()
+# 	return render(request, 'volunteerform.html', {'vInterest': item.text})
+	#return render(request, 'volunteerform.html', {'vInterest': request.POST.get('Vinterest'),'dSched': request.POST.get('Dsched'),'tSched': request.POST.get('Tsched'''),})
+
+# def VolunteerForm(request):
+# 	return render(request, 'volunteerform.html', {'vInterest': request.POST.get('Vinterest'),'dSched': request.POST.get('Dsched'),'tSched': request.POST.get('Tsched'''),})
+
+
 # def VolunteerForm(request):
 # 	return render(request, 'volunteerform.html', {'firstName': request.POST.get('Fname'),'lastName': request.POST.get('Lname'),'Municipality': request.POST.get('Maddress'),'City': request.POST.get('Caddress',''),})
 

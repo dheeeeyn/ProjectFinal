@@ -14,16 +14,35 @@ class VolunteerFormTest(TestCase):
 		self.assertTemplateUsed(response,'volunteerform.html')
 
 
+	def test_only_saves_items_when_necessary(self):
+		self.client.get('/')
+		self.assertEqual(Item.objects.count(), 0)
+
 	def test_can_save_a_POST_request(self):
 		response = self.client.post('/', data={'Vinterest': 'vInterest'})
-		self.assertIn('vInterest', response.content.decode())
-		self.assertTemplateUsed(response, 'volunteerform.html')
+		# self.assertIn('vInterest', response.content.decode())
+		# self.assertTemplateUsed(response, 'volunteerform.html')
 
- 
-	# def test_can_save_a_POST_request(self):
-	# 	response = self.client.post('/', data={'Fname': 'firstName'})
-	# 	self.assertIn('firstName', response.content.decode())
-	# 	self.assertTemplateUsed(response, 'volunteerform.html')
+		self.assertEqual(Item.objects.count(), 1)
+		newItem = Item.objects.first()
+		self.assertEqual(newItem.text, 'vInterest')
+		# self.assertEqual(newItem.text, 'dSched')
+		# self.assertEqual(newItem.text, 'tSched')
+		
+		# self.assertEqual(response.status_code, 302)
+		# self.assertEqual(response['location'], '/')
+	
+	def test_redirects_POST(self):
+		response = self.client.post('/', data={'Vinterest': 'vInterest'})
+		self.assertEqual(response.status_code, 302)
+		self.assertEqual(response['location'], '/')
+
+	def test_template_display_items(self):
+		Item.objects.create(text='input item 1')
+		Item.objects.create(text='input item 2')
+		response = self.client.get('/')
+		self.assertIn('input item 1', response.content.decode())
+		self.assertIn('input item 2', response.content.decode())
 
 class ORMTest(TestCase):
 	def test_saving_and_retrieving_items(self):
@@ -33,17 +52,12 @@ class ORMTest(TestCase):
 		second_item = Item()
 		second_item.text = 'Item two'
 		second_item.save()
-		third_item = Item()
-		third_item.text = 'Item three'
-		third_item.save()
 		saved_items = Item.objects.all()
-		self.assertEqual(saved_items.count(), 3)
+		self.assertEqual(saved_items.count(), 2)
 		first_saved_item = saved_items[0]
 		second_saved_item = saved_items[1]
-		third_saved_item = saved_items[2]
 		self.assertEqual(first_saved_item.text, 'Item one')
 		self.assertEqual(second_saved_item.text, 'Item two')
-		self.assertEqual(third_saved_item.text, 'Item three')
 
 	# def test_root_url_resolves_to_volunteerfrom_views(self):
 	# 	found = resolve ('/')
