@@ -26,16 +26,12 @@ class VolunteerFormTest(TestCase):
 		self.assertEqual(Item.objects.count(), 1)
 		newItem = Item.objects.first()
 		self.assertEqual(newItem.text, 'vInterest')
-		# self.assertEqual(newItem.text, 'dSched')
-		# self.assertEqual(newItem.text, 'tSched')
-		
-		# self.assertEqual(response.status_code, 302)
-		# self.assertEqual(response['location'], '/')
 	
 	def test_redirects_POST(self):
 		response = self.client.post('/', data={'Vinterest': 'vInterest'})
 		self.assertEqual(response.status_code, 302)
-		self.assertEqual(response['location'], '/')
+		#self.assertEqual(response['location'], '/')
+		self.assertEqual(response['location'], '/VApp/viewList_url/')
 
 	def test_template_display_items(self):
 		Item.objects.create(text='input item 1')
@@ -59,6 +55,13 @@ class ORMTest(TestCase):
 		self.assertEqual(first_saved_item.text, 'Item one')
 		self.assertEqual(second_saved_item.text, 'Item two')
 
+class ListViewTest(TestCase):
+	def test_displays_all_items(self):
+		Item.objects.create(text ='danene kyuti')
+		Item.objects.create(text='maggie sungit')
+		response = self.client.get('/VApp/viewList_url/')
+		self.assertContains(response, 'danene kyuti')
+		self.assertContains(response, 'maggie sungit')
 	# def test_root_url_resolves_to_volunteerfrom_views(self):
 	# 	found = resolve ('/')
 	# 	self.assertEqual(found.func, VolunteerForm)

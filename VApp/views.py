@@ -3,15 +3,18 @@ from VApp.models import Item
 #from django.http import HttpResponse
 
 
-
-
 def VolunteerForm(request):
 	if request.method == 'POST':
 		Item.objects.create(text=request.POST['Vinterest'])
-		return redirect('/')
+		#return redirect('/')
+		return redirect('/VApp/viewList_url/')
 	items = Item.objects.all()
 	return render(request, 'volunteerform.html',{'vInterest': items})
 
+
+def ViewList(request):
+	items = Item.objects.all()
+	return render(request, 'volunteerform.html',{'vInterest': items})
 
 # def VolunteerForm(request):
 # 	if request.method == 'POST':
