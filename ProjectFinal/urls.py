@@ -4,6 +4,7 @@ from VApp import views
 urlpatterns = [
     url(r'^$', views.VolunteerForm, name='volunteerform'),
     url(r'^VApp/viewList_url/$', views.ViewList, name='viewList'),
+    url(r'^VApp/newList_url$', views.NewList, name='newList'),
 ]
 
 

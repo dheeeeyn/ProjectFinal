@@ -29,7 +29,7 @@ class VolunteerForm(LiveServerTestCase):
 		# rows = table.find_elements_by_tag_name('tr')	
 		# self.assertIn(row_text, [row.text for row in rows])
 
-	def test_start_list_user_one(self):
+	def test_start_user_one(self):
 		#self.browser.get('http://localhost:8000')
 		self.browser.get(self.live_server_url)
 		self.assertIn('VOLUNTEER', self.browser.title)
@@ -148,7 +148,7 @@ class VolunteerForm(LiveServerTestCase):
 		time.sleep(.1)
 		btnReg = self.browser.find_element_by_id('btnRegister')
 		btnReg.click()
-		self.antay_rows_in_info_list_table('1: Documentation Team')
+		self.antay_rows_in_info_list_table('1: Event Organizer Team')
 		user2_url = self.browser.current_url
 		self.assertRegex(user2_url, 'VApp/.+')
 		self.assertNotEqual(viewList_url, user2_url)
