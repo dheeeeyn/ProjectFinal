@@ -2,38 +2,184 @@
     <head>
         <title>VOLUNTEER</title>
     </head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap">
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Livvic&family=Lobster&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap">
+    <style>
+    :root {
+    --default: #433ae0;
+    --grey: #8492a6;
+    --white: #fff;
+    --black: #000;
+    --bg: #187A62;
+    --primaryColor: #f1f1f1;
+    --lgreen:#a4c639;
+    --yellow: #ffd900;
+    --blue :#55a7e6;
+    /* gradient color   */
+    --sky: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    }
+
+        
+    h1{
+        font-family: "Montserrat";
+        letter-spacing: 1rem;
+        margin-top: 4rem;
+        font-size: 4rem;
+        text-align: center;
+    }
+
+    h1 strong{
+        color: var(--blue);
+    }
+
+    h3{
+        font-family: "Montserrat";
+        letter-spacing: .3rem;
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    /*form*/
+
+    .volunteer{
+        background-color: #f7f7f7;
+        margin-bottom: 3rem;
+        width: 50%;
+        display: flex; 
+        transform: translate(50%,4%);
+    }
+
+    .volunteer-container{
+        text-align:center;
+        width:100%;
+    }
+
+    .volunteer-box h2{
+        font-family: "Montserrat";
+        padding-top: 1rem;
+        font-size: 3rem;
+    }
+    .volunteer-box h2 strong{
+        color: var(--blue);
+    }
+
+    .volunteer-box hr{
+    width:20%;
+    margin-bottom: 2rem;
+    color-fill: blue;
+    }
+
+    .volunteer-box label{
+    font-family: "Raleway", black;
+    font-size: 1.7rem;
+    }
+    .volunteer-box input{
+    border-radius: 5rem;
+    height: 9%;
+    width: 60%;
+    line-height: 1.7rem;
+    padding: 3px 15px;
+    color: #aaa!important;
+    background-color: #343434; Name:
+    font-size: 1.5rem;
+    border: 0px solid;
+    margin-bottom: 1.5rem;
+    }
+
+    #btnRegister{
+    font-family: "Livvic";
+    font-size: 1.3rem;
+    font-color: black;
+    height: 3rem;
+    width: 18rem;
+    border: none;
+    border-radius: 1.2rem;
+    padding: .7rem 2rem;
+    cursor: pointer;
+    background: var(--sky);
+    margin-top:2rem;
+    margin-bottom: 1rem;
+    }
+
+     #btnRegister:hover{
+    background: var(--yellow);
+    border: 1px solid white;
+    font-color: black;
+    }
+
+
+    .Vlist{
+    background-color: #a1c4fd;
+/*    background-color: rgb(18, 18, 77);*/
+    }
+
+    .Vlist h1{
+    font-size: 3rem;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 3px rgb(0, 0, 0);
+    padding:3rem;
+    letter-spacing: 0.5rem;
+    }
+
+    .V_Info_Table{
+    display: flex; 
+    transform: translate(10%,30%);
+
+    margin-bottom: 5rem;
+    }
+
+    #v_info_list_table{
+    border-collapse: collapse;
+    width: 80%;
+    text-align: center;
+    border: 2px solid #ddd;
+    padding: 1rem;
+    }
+
+
+    #v_info_list_table tr:nth-child(even){background-color: #f2f2f2;}
+
+    th{
+    font-family: "Raleway";
+    font-size: 1.5rem;
+    font-style: bold;
+    text-shadow: 2px 2px 4px black;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: var(--blue);
+    color: white;
+    }
+
+    td{
+    font-family: "Livvic";
+    font-size: 1.3rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    }
+    </style>
     <body>
-        <h1> Be one of Us! </h1>
+        <h1> Project <strong> Malasakit </strong> </h1>
+        <h3> Choose your task !</h3>
         <div class="volunteer">         
             <div class="volunteer-container">
                 <div class="volunteer-box">
                     <!-- VApp/newList_url/ -->
-                    <form method="POST" action="/VApp/newList_url">
-                        <label for="name"> Name:</label>
-                        <br>
-                        <input type="text" id="Fname" name="Fname" placeholder="Your first name">
-                        <input type="text" id="Lname" name="Lname" placeholder="Your last name" >
-                        <br>
-                        <br>
-                        <label for="address"> Address</label>
-                        <br>
-                        <input type="text" id="Maddress" name="Maddress" placeholder="Municipality">
-                        <input type="text" id="Caddress" name="Caddress" placeholder="City">
-                        <br>
-                        <br>
-
+                    <form method="POST" action="/VApp/{{ vId.id }}/addItem">
+                        <h2><strong>Volunteer</strong> Task Log</h2>
                         <!-- next page -->
-                        <label for="VInterest"> Volunteer Interest </label>
+                        <label for="VInterest"> Volunteer Interest:</label>
                         <br>
                         <input type="text" id="Vinterest" name="Vinterest" placeholder="(Ex. Event Organizer, Repacking Team, Researcher)" required>
                         <br>
 
-                        <label for="Dsched"> Available Schedule</label>
+                        <label for="Dsched"> Available Schedule:</label>
                         <br>
                         <input type="type" id="Dsched" name="Dsched" placeholder="(Monday, Wednesday, Friday, Sunday ONLY)" required>
                         <br>
 
-                        <label for="Tsched"> Choose your Shift</label>
+                        <label for="Tsched"> Choose your Shift:</label>
                         <br>
                         <input type="text" id="Tsched" name="Tsched" placeholder="First Shift(7:00 am - 11:00 pm)/ Second Shift(1:00 pm- 5:00 pm)" required>
                         <br>
@@ -49,87 +195,22 @@
         <div class="V_Info_Table">
             <table id="v_info_list_table" name="v_info_list_table">
                 <tr>
-             
-                      <th> Volunteer Interest</th>
-                      <th> Schedule </th>
-                      <th> Time </th>
+                    <th> Volunteer Interest</th>
+                    <th> Schedule </th>
+                    <th> Time </th>
                 </tr>    
-                      {% for item in vInterest %}
+
+                    {% for item in vId.item_set.all %}
                 <tr>
 
-                       <td>{{ forloop.counter }}: {{ item.text }}</td>
- <!--  
-                    <td>1: {{ vInterest }}</td>
-                  <td> {{ dSched }} </td>
+                     <td>{{ forloop.counter }}: {{ item.text }}</td>
+                    <!--  <td>1: {{ vInterest }}</td>
+                    <td> {{ dSched }} </td>
                     <td> {{ tSched }} </td> -->
                  
                 </tr>
                    {% endfor %}
             </table>
         </div>
-
-<!--         <div class="InfoTable">
-            <table id="info_list_table" name="info_list_table">                
-            <tr>
-            </tr> 
-             <th> Volunteer Interest</th>
-                <tr>
-                    <td>1: {{ firstName }}</td>
-                    <td>{{ lastName }}</td>
-                    <td>lives at</td>
-                     <td>{{ Municipality }}</td>
-                    <td>{{ City }}</td>
-                </tr>
-        </div>
- -->
     </body>
 </html>
-
-
-
-          <!-- <label for="search"> Volunteer interest</label>
-                        <br>
-                        <input type="radio" id="search" name="VInterest">
-                        <label for="search">Researcher</label>
-                        <br>
-                        <input type="radio" id="eorganize" name="VInterest" value="Event Organizer">
-                        <label for="eorganize">Event Organizer</label>
-                        <br>
-                        <input type="radio" id="rteam" name="VInterest">
-                        <label for="rteam">Repacking Team</label>
-                        <br>
-                        <input type="radio" id="rteam" name="VInterest">
-                        <label for="dteam">Documentation Team</label>
-                        <br>
-                        <label for="others"> others:</label>
-                        <br>
-                        <input placeholder="please specify..." type="text" id="other" name="amount">
-
-                        <br>
-                        <br>
-                        <label for="sched"> Choose your Available Schedule: </label>
-                        <br>
-                        <input type="radio" id="Mday" name="Mday">
-                        <label for="Mday">Monday</label>
-                        <br>
-                        <input type="radio" id="Wday" name="Wdaay">
-                        <label for="fday">Wednesday</label>
-                        <br>
-                        <input type="radio" id="Fday" name="Dday>
-                        <label for="fday">Friday</label>
-                         <br>
-                        <input type="radio" id="rteam" name="VInterest">
-                        <label for="fday">Sunday</label>
-                        <br>
-                        <br>
-
-                        <label for="2sched"> Choose your Available Shift: </label>
-                        <br>
-                        <br>
-                        <input type="radio" id="Fshift" name="Fshift">
-                        <label for="Fshift">First shift (7:00 am - 11:00 pm)</label>
-                        <br>
-                        <br>
-                        <input type="radio" id="Sshift" name="Sshift">
-                        <label for="Sshift">Second Shift (1:00 pm - 5:00 pm)</label>
-                         <br> -->

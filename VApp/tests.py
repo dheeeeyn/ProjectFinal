@@ -1,5 +1,5 @@
 from django.test import TestCase
-from VApp.models import Item
+from VApp.models import Item, Volunteer
 #from django.urls import resolve
 #from VApp.views import VolunteerForm
 
@@ -42,30 +42,61 @@ class VolunteerFormTest(TestCase):
 
 class ORMTest(TestCase):
 	def test_saving_and_retrieving_input_item(self):
+		newVolunteer = Volunteer()
+		newVolunteer.save()
 		first_item = Item()
 		first_item.text = 'Item one'
+		first_item.VolId = newVolunteer
 		first_item.save()
 		second_item = Item()
+		second_item.VolId = newVolunteer
 		second_item.text = 'Item two'
 		second_item.save()
 		saved_items = Item.objects.all()
+		savedVolunteer = Volunteer.objects.first()
 		self.assertEqual(saved_items.count(), 2)
+		self.assertEqual(savedVolunteer,newVolunteer)
 		first_saved_item = saved_items[0]
 		second_saved_item = saved_items[1]
 		self.assertEqual(first_saved_item.text, 'Item one')
 		self.assertEqual(second_saved_item.text, 'Item two')
+		self.assertEqual(first_saved_item.VolId, newVolunteer)
+		self.assertEqual(second_saved_item.VolId, newVolunteer)
+		
 
 class ListViewTest(TestCase):
-	def test_uses_list_template_template(self):
-		response = self.client.get('/VApp/viewList_url/')
-		self.assertTemplateUsed(response,'volunteerinfo.html')
 
 	def test_displays_all_items(self):
-		Item.objects.create(text ='milleth kulet')
-		Item.objects.create(text='maggie sungit')
-		response = self.client.get('/VApp/viewList_url/')
+		newVolunteer = Volunteer.objects.create()
+		Item.objects.create(VolId=newVolunteer, text ='milleth kulet')
+		Item.objects.create(VolId=newVolunteer,text='maggie sungit')
+		response = self.client.get(f'/VApp/{newVolunteer.id}/')
 		self.assertContains(response, 'milleth kulet')
 		self.assertContains(response, 'maggie sungit')
+		self.assertNotContains(response, 'Rica Pretty')
+		self.assertNotContains(response, 'Danielle Kyuti')
+
+		newVolunteer_2 = Volunteer.objects.create()
+		Item.objects.create(VolId=newVolunteer_2, text ='Rica Pretty')
+		Item.objects.create(VolId=newVolunteer_2, text='Danielle Kyuti')
+		response = self.client.get(f'/VApp/{newVolunteer_2.id}/')
+		self.assertContains(response, 'Rica Pretty')
+		self.assertContains(response, 'Danielle Kyuti')
+		self.assertNotContains(response, 'milleth kulet')
+		self.assertNotContains(response, 'maggie sungit')
+		
+	def test_uses_list_v_info_template(self):
+		newVolunteer = Volunteer.objects.create()
+		response = self.client.get(f'/VApp/{newVolunteer.id}/')
+		self.assertTemplateUsed(response,'volunteerinfo.html')
+
+	#kakaadd ko lang
+	def test_pass_v_info_to_template(self):
+	 	VolDummy1 = Volunteer.objects.create()
+	 	VolDummy2 = Volunteer.objects.create()
+	 	passVinfo = Volunteer.objects.create()
+	 	response = self.client.get(f'/VApp/{passVinfo.id}/')
+	 	self.assertEqual(response.context['vId'], passVinfo) 
 
 
 class New_List_Test(TestCase):
@@ -80,11 +111,40 @@ class New_List_Test(TestCase):
 	
 	def test_redirects_POST(self):
 		response = self.client.post('/VApp/newList_url', data={'Vinterest': 'vInterest'})
-		self.assertRedirects(response, '/VApp/viewList_url/')
+		newList = Volunteer.objects.first()
+		self.assertRedirects(response,f'/VApp/{newList.id}/')
 
 		# self.assertEqual(response.status_code, 302)
 		# #self.assertEqual(response['location'], '/')
 		# self.assertEqual(response['location'], '/VApp/viewList_url/')
+
+
+class Add_New_Volunteer_Test(TestCase):
+
+
+	def test_another_post_existing(self):
+		VolDummy1 = Volunteer.objects.create()
+		VolDummy2 = Volunteer.objects.create()
+		existingVol = Volunteer.objects.create()
+		self.client.post(f'/VApp/{existingVol.id}/addItem', data={'Vinterest': 'vInterest'})
+		self.assertEqual(Item.objects.count(),1)
+		newItem =Item.objects.first()
+		self.assertEqual(newItem.text,'vInterest')
+		self.assertEqual(newItem.VolId, existingVol)
+
+	def test_redirects_to_log_view(self):
+		VolDummy1 = Volunteer.objects.create()
+		VolDummy2 = Volunteer.objects.create()
+		VolDummy3 = Volunteer.objects.create()
+		existingVol = Volunteer.objects.create()
+		response = self.client.post(f'/VApp/{existingVol.id}/addItem', data={'Vinterest': 'vInterest'})
+		self.assertRedirects(response, f'/VApp/{existingVol.id}/')
+
+
+
+
+
+
 
 
 

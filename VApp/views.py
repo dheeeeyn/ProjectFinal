@@ -1,25 +1,34 @@
 from django.shortcuts import redirect, render
-from VApp.models import Item
+from VApp.models import Item, Volunteer
 #from django.http import HttpResponse
 
 
 def VolunteerForm(request):
+	return render(request, 'volunteerform.html')
 	# if request.method == 'POST':
 	# 	Item.objects.create(text=request.POST['Vinterest'])
 	# 	#return redirect('/')
 	# 	return redirect('/VApp/viewList_url/')
 	# items = Item.objects.all()
 	#return render(request, 'volunteerform.html',{'vInterest': items})
-	return render(request, 'volunteerform.html')
+	
 
 
-def ViewList(request):
-	items = Item.objects.all()
-	return render(request, 'volunteerinfo.html',{'vInterest': items})
+def ViewList(request,VolId):
+	vId = Volunteer.objects.get(id=VolId)
+	#items = Item.objects.all()
+	#items = Item.objects.filter(VolId=vId)
+	return render(request, 'volunteerinfo.html',{'vId': vId})
 
 def NewList(request):
-	Item.objects.create(text=request.POST['Vinterest'])
-	return redirect('/VApp/viewList_url/')
+	newVolunteer = Volunteer.objects.create()
+	Item.objects.create(VolId=newVolunteer, text=request.POST['Vinterest'])
+	return redirect(f'/VApp/{newVolunteer.id}/')
+
+def VolList(request,VolId):
+	vId = Volunteer.objects.get(id=VolId)
+	Item.objects.create(VolId=vId, text=request.POST['Vinterest'])
+	return redirect(f'/VApp/{vId.id}/')
 
 
 # def VolunteerForm(request):
