@@ -45,21 +45,31 @@ class ORMTest(TestCase):
 		newVolunteer = Volunteer()
 		newVolunteer.save()
 		first_item = Item()
-		first_item.text = 'Item one'
 		first_item.VolId = newVolunteer
+		first_item.text = 'Item one'
+		first_item.Sched = 'Sched1'
+		first_item.schedT = 'TSched1'
 		first_item.save()
+
 		second_item = Item()
 		second_item.VolId = newVolunteer
 		second_item.text = 'Item two'
+		second_item.Sched = 'Sched2'
+		second_item.schedT = 'TSched2'
 		second_item.save()
+
 		saved_items = Item.objects.all()
 		savedVolunteer = Volunteer.objects.first()
 		self.assertEqual(saved_items.count(), 2)
-		self.assertEqual(savedVolunteer,newVolunteer)
+		#self.assertEqual(savedVolunteer,newVolunteer)
 		first_saved_item = saved_items[0]
 		second_saved_item = saved_items[1]
 		self.assertEqual(first_saved_item.text, 'Item one')
 		self.assertEqual(second_saved_item.text, 'Item two')
+		self.assertEqual(first_saved_item.Sched, 'Sched1')
+		self.assertEqual(second_saved_item.Sched, 'Sched2')
+		self.assertEqual(first_saved_item.schedT, 'TSched1')
+		self.assertEqual(second_saved_item.schedT, 'TSched2')
 		self.assertEqual(first_saved_item.VolId, newVolunteer)
 		self.assertEqual(second_saved_item.VolId, newVolunteer)
 		
@@ -90,7 +100,6 @@ class ListViewTest(TestCase):
 		response = self.client.get(f'/VApp/{newVolunteer.id}/')
 		self.assertTemplateUsed(response,'volunteerinfo.html')
 
-	#kakaadd ko lang
 	def test_pass_v_info_to_template(self):
 	 	VolDummy1 = Volunteer.objects.create()
 	 	VolDummy2 = Volunteer.objects.create()
@@ -101,16 +110,18 @@ class ListViewTest(TestCase):
 
 class New_List_Test(TestCase):
 	def test_save_a_POST_request(self):
-		response = self.client.post('/VApp/newList_url', data={'Vinterest': 'vInterest'})
+		response = self.client.post('/VApp/newList_url', data={'Vinterest': 'vInterest', 'Dsched':'Sched', 'Tsched':'schedT'})
 		# self.assertIn('vInterest', response.content.decode())
 		# self.assertTemplateUsed(response, 'volunteerform.html')
 
 		self.assertEqual(Item.objects.count(), 1)
 		newItem = Item.objects.first()
 		self.assertEqual(newItem.text, 'vInterest')
+		self.assertEqual(newItem.Sched, 'Sched')
+		self.assertEqual(newItem.schedT, 'schedT')
 	
 	def test_redirects_POST(self):
-		response = self.client.post('/VApp/newList_url', data={'Vinterest': 'vInterest'})
+		response = self.client.post('/VApp/newList_url', data={'Vinterest': 'vInterest','Dsched':'Sched', 'Tsched':'schedT'})
 		newList = Volunteer.objects.first()
 		self.assertRedirects(response,f'/VApp/{newList.id}/')
 
@@ -126,18 +137,21 @@ class Add_New_Volunteer_Test(TestCase):
 		VolDummy1 = Volunteer.objects.create()
 		VolDummy2 = Volunteer.objects.create()
 		existingVol = Volunteer.objects.create()
-		self.client.post(f'/VApp/{existingVol.id}/addItem', data={'Vinterest': 'vInterest'})
+		self.client.post(f'/VApp/{existingVol.id}/addItem', data={'Vinterest': 'vInterest', 'Dsched':'Sched', 'Tsched':'schedT'})
 		self.assertEqual(Item.objects.count(),1)
 		newItem =Item.objects.first()
 		self.assertEqual(newItem.text,'vInterest')
+		self.assertEqual(newItem.Sched,'Sched')
+		self.assertEqual(newItem.schedT, 'schedT')
 		self.assertEqual(newItem.VolId, existingVol)
+		
 
-	def test_redirects_to_log_view(self):
+	def test_redirects_to_vol_view(self):
 		VolDummy1 = Volunteer.objects.create()
 		VolDummy2 = Volunteer.objects.create()
 		VolDummy3 = Volunteer.objects.create()
 		existingVol = Volunteer.objects.create()
-		response = self.client.post(f'/VApp/{existingVol.id}/addItem', data={'Vinterest': 'vInterest'})
+		response = self.client.post(f'/VApp/{existingVol.id}/addItem', data={'Vinterest': 'vInterest', 'Dsched':'Sched','Tsched':'schedT'})
 		self.assertRedirects(response, f'/VApp/{existingVol.id}/')
 
 

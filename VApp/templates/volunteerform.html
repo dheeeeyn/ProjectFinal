@@ -77,14 +77,14 @@
 }
     .volunteer-box input{
     border-radius: 5rem;
-    height: 5%;
+    height: 6%;
     width: 60%;
     line-height: 1.7rem;
     display: inline-block;
     padding: 0px 15px;
     color: #aaa!important;
     background-color: #343434; Name:
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     border: 0px solid;
     margin-bottom: 1rem;
     }
@@ -161,12 +161,6 @@
     padding-bottom: .5rem;
     }
 
-
-/*    .V_Info_Table th {
-      background-color: #4CAF50;
-      color: white;
-    }*/
-
     </style>
     <body>
         <h1> Project <strong> Malasakit </strong> </h1>
@@ -231,79 +225,12 @@
                       {% for item in vInterest %}
                 <tr>
 
-                       <td>{{ forloop.counter }}: {{ item.text }}</td>
- <!--  
-                    <td>1: {{ vInterest }}</td>
-                  <td> {{ dSched }} </td>
-                    <td> {{ tSched }} </td> -->
-                 
+                       <td>{{ forloop.counter }}: {{ item.text }}</td>                 
                 </tr>
                    {% endfor %}
             </table>
         </div>
-
-<!--         <div class="InfoTable">
-            <table id="info_list_table" name="info_list_table">                
-            <tr>
-            </tr> 
-             <th> Volunteer Interest</th>
-                <tr>
-                    <td>1: {{ firstName }}</td>
-                    <td>{{ lastName }}</td>
-                    <td>lives at</td>
-                     <td>{{ Municipality }}</td>
-                    <td>{{ City }}</td>
-                </tr>
-        </div>
- -->
     </body>
 </html>
 
 
-
-          <!-- <label for="search"> Volunteer interest</label>
-                        <br>
-                        <input type="radio" id="search" name="VInterest">
-                        <label for="search">Researcher</label>
-                        <br>
-                        <input type="radio" id="eorganize" name="VInterest" value="Event Organizer">
-                        <label for="eorganize">Event Organizer</label>
-                        <br>
-                        <input type="radio" id="rteam" name="VInterest">
-                        <label for="rteam">Repacking Team</label>
-                        <br>
-                        <input type="radio" id="rteam" name="VInterest">
-                        <label for="dteam">Documentation Team</label>
-                        <br>
-                        <label for="others"> others:</label>
-                        <br>
-                        <input placeholder="please specify..." type="text" id="other" name="amount">
-
-                        <br>
-                        <br>
-                        <label for="sched"> Choose your Available Schedule: </label>
-                        <br>
-                        <input type="radio" id="Mday" name="Mday">
-                        <label for="Mday">Monday</label>
-                        <br>
-                        <input type="radio" id="Wday" name="Wdaay">
-                        <label for="fday">Wednesday</label>
-                        <br>
-                        <input type="radio" id="Fday" name="Dday>
-                        <label for="fday">Friday</label>
-                         <br>
-                        <input type="radio" id="rteam" name="VInterest">
-                        <label for="fday">Sunday</label>
-                        <br>
-                        <br>
-
-                        <label for="2sched"> Choose your Available Shift: </label>
-                        <br>
-                        <br>
-                        <input type="radio" id="Fshift" name="Fshift">
-                        <label for="Fshift">First shift (7:00 am - 11:00 pm)</label>
-                        <br>
-                        <br>
-                        <input type="radio" id="Sshift" name="Sshift">
-                        <label for="Sshift">Second Shift (1:00 pm - 5:00 pm)</label>
-                         <br> -->

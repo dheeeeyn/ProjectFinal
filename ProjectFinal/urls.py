@@ -1,11 +1,13 @@
 from django.conf.urls import url 
 from VApp import views
+from django.contrib import admin
 
 urlpatterns = [
     url(r'^$', views.VolunteerForm, name='volunteerform'),
     url(r'^VApp/(\d+)/$', views.ViewList, name='viewList'),
     url(r'^VApp/newList_url$', views.NewList, name='newList'),
     url(r'^VApp/(\d+)/addItem$', views.VolList, name='additem'),
+    url('admin/', admin.site.urls),
 ]
 
 

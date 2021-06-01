@@ -5,7 +5,10 @@ class Volunteer(models.Model):
 
 class Item(models.Model):
 	VolId = models.ForeignKey(Volunteer, default=None, on_delete=models.CASCADE)
-	text = models.TextField(default='')
+	text = models.TextField(default='') #interest
+	Sched= models.TextField(default='')
+	schedT= models.TextField(default='')
+
 
 
 	# pass

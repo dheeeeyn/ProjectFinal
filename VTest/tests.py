@@ -81,12 +81,10 @@ class VolunteerForm(LiveServerTestCase):
 		inputschedT.send_keys('First Shift')
 		time.sleep(1)
 		btnReg.click()
-		# self.check_rows_in_info_list_table('1: Event Organizer Monday First Shift')		self.check_rows_in_info_list_table('1: Event Organizer Monday First Shift')
-		self.antay_rows_in_info_list_table('1: Event Organizer')
+		self.antay_rows_in_info_list_table('1: Event Organizer Monday First Shift')
 
 
 		#This page should update and show name on the list
-		
 		#Vinfo2
 		inputInterest = self.browser.find_element_by_id('Vinterest')
 		inputschedD = self.browser.find_element_by_id('Dsched')
@@ -99,14 +97,13 @@ class VolunteerForm(LiveServerTestCase):
 		inputInterest.send_keys('Repacking Team')
 		time.sleep(1)
 		inputschedD.click()
-		inputschedD.send_keys('Wednesday')
+		inputschedD.send_keys('Friday')
 		time.sleep(1)
 		inputschedT.click()
 		inputschedT.send_keys('Second Shift')
 		time.sleep(1)
 		btnReg.click()
-		# self.check_rows_in_info_list_table('2: Repacking Team Wednesday Second Shift')
-		self.antay_rows_in_info_list_table('2: Repacking Team')
+		self.antay_rows_in_info_list_table('2: Repacking Team Friday Second Shift')
 
 	def test_multiple_users_with_different_urls(self):
 		self.browser.get(self.live_server_url)
@@ -128,8 +125,7 @@ class VolunteerForm(LiveServerTestCase):
 		inputschedT.send_keys('Second Shift')
 		time.sleep(1)
 		btnReg.click()
-		# self.check_rows_in_info_list_table('1: Event Organizer Monday First Shift')		self.check_rows_in_info_list_table('1: Event Organizer Monday First Shift')
-		self.antay_rows_in_info_list_table('1: Documentation Team')
+		self.antay_rows_in_info_list_table('1: Documentation Team Sunday Second Shift')
 		viewList_url = self.browser.current_url
 		self.assertRegex(viewList_url, '/VApp/.+')
 
@@ -137,7 +133,7 @@ class VolunteerForm(LiveServerTestCase):
 		self.browser = webdriver.Firefox()
 		self.browser.get(self.live_server_url)
 		htmlBody = self.browser.find_element_by_tag_name('body').text
-		self.assertNotIn('Documentation Team',htmlBody)
+		self.assertNotIn('Documentation Team Sunday Second Shift',htmlBody)
 		time.sleep(1)
 		#Vinfo
 		inputInterest = self.browser.find_element_by_id('Vinterest')
@@ -155,13 +151,13 @@ class VolunteerForm(LiveServerTestCase):
 		time.sleep(1)
 		btnReg = self.browser.find_element_by_id('btnRegister')
 		btnReg.click()
-		self.antay_rows_in_info_list_table('1: Event Organizer Team')
+		self.antay_rows_in_info_list_table('1: Event Organizer Team Sunday Second Shift')
 		user2_url = self.browser.current_url
 		self.assertRegex(user2_url, 'VApp/.+')
 		self.assertNotEqual(viewList_url, user2_url)
 		htmlBody = self.browser.find_element_by_tag_name('body').text
-		self.assertNotIn('Documentation Team',htmlBody)
-		self.assertIn('1: Event Organizer Team',htmlBody)
+		self.assertNotIn('Documentation Team Sunday Second Shift',htmlBody)
+		self.assertIn('1: Event Organizer Team Sunday Second Shift',htmlBody)
 
 
 

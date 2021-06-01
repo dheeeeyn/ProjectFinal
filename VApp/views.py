@@ -18,16 +18,16 @@ def ViewList(request,VolId):
 	vId = Volunteer.objects.get(id=VolId)
 	#items = Item.objects.all()
 	#items = Item.objects.filter(VolId=vId)
-	return render(request, 'volunteerinfo.html',{'vId': vId})
+	return render(request, 'volunteerinfo.html',{'vId': vId,'Dsched':'Sched', 'Tsched': 'schedT'})
 
 def NewList(request):
 	newVolunteer = Volunteer.objects.create()
-	Item.objects.create(VolId=newVolunteer, text=request.POST['Vinterest'])
+	Item.objects.create(VolId=newVolunteer, text=request.POST['Vinterest'], Sched=request.POST['Dsched'], schedT=request.POST['Tsched'])
 	return redirect(f'/VApp/{newVolunteer.id}/')
 
 def VolList(request,VolId):
 	vId = Volunteer.objects.get(id=VolId)
-	Item.objects.create(VolId=vId, text=request.POST['Vinterest'])
+	Item.objects.create(VolId=vId, text=request.POST['Vinterest'], Sched=request.POST['Dsched'],schedT=request.POST['Tsched'])
 	return redirect(f'/VApp/{vId.id}/')
 
 
