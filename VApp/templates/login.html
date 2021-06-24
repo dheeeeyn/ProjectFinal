@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <title> Project Malasakit</title>
+        <meta charset="utf-8">
+        <!-- CSS FILES -->
+        <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="stylesheet" href="/static/css/font.css">
+        <link rel="stylesheet" href="/static/css/responsive.css">
+        <meta name="viewport" conetent="width=device-width, intial-scle=1.0">
+    </head> 
+
+    <body>
+ <!-- back to top -->
+        <button onclick="topFunction()" id="top" title="Go to top">Back to Top</button>
+       <header class="header" id="header">
+ <!------------------------------ navigation--------------------------------------------- -->
+
+            <div class="navigation">
+                <nav class="nav_container">
+                    <div class="nav_title">
+                            <a href="http://projectmalasakit.ph/" class="nav_link">Project Malasakit</a>
+                    </div>
+
+                    <div class="nav_menu">
+                        <ul class="nav_list">
+                            <li class="nav_item">
+                                <a href="http://projectmalasakit.ph/" class="nav_link">Home</a>
+                            </li>
+                            <li class="nav_item">
+                                <a href="{% url 'donate' %}" class="nav_link">Donate</a>
+                            </li>
+                            <li class="nav_item">
+                                <a href="{% url 'volunteer' %}" class="nav_link">Volunteer</a>
+                            </li>
+                            <li class="nav_item">
+                                <a href="{% url 'profile' %}" class="nav_link">Profile</a>
+                            </li>
+                            <li class="nav_item">
+                                <a href="{% url 'login' %}" class="nav_link">Login</a>
+                            </li>
+                        </ul> 
+                    </div>
+
+ <!----------------------------- hamburger-------------------------- -->
+
+                    <div class="hamburger">
+                        <span>
+                            <img src="./img/hamburger.png" alt="hamburger">
+                        </span>
+                    </div>
+                </nav>
+            </div>
+       </header>
+
+<!------------------ login ------------------------>
+       <div class="part">
+         <h1> Be Part of <strong> Us</strong></h1>
+       </div>
+
+        <div class="login">
+          <div class="log">
+            <div class="wrapper">
+              <div class="title-text">
+                <div class="title login">
+                    Login Form
+                </div>
+                <div class="title signup">
+                    Signup Form
+                </div>
+              </div>
+              <div class="form-container">
+                <div class="slide-controls">
+                    <input type="radio" name="slide" id="login" checked>
+                    <input type="radio" name="slide" id="signup">
+                    <label for="login" class="slide login">Login</label>
+                    <label for="signup" class="slide signup">Signup</label>
+                    <div class="slider-tab"></div>
+                </div>
+                <div class="form-inner">
+                    <form action="#" class="login" onsubmit="return validate()">
+                      <div class="field">
+                          <input type="text" id="YEmail" name="YEmail" placeholder="Email Address" required>
+			                		<!-- <small class="message">error message</small> -->
+                      </div>
+                      <div class="field">
+                          <input type="password" id="YPass" name="YPass"placeholder="Password" required>
+			                		<!-- <small class="message">error message</small> -->
+                      </div>
+                      <div class="field btn">
+                          <div class="btn-layer"></div>
+                          <input type="submit" value="Login">
+                      </div>
+                      <div class="signup-link">
+                          Not a member? <a href="">Signup now</a>
+                      </div>
+
+
+                    </form>
+                    <form action="" class="signup" onclick="validate()">
+                      <div class="field">
+                        <input type="text" id="YName" name="YName" placeholder="Name" required >
+			                		<small class="message">error message</small>
+                      </div>
+                      <div class="field">
+                          <input type="email" id="email" name="email" placeholder="Email Address"required>
+			                		<small class="message">error message</small>
+                      </div>
+                      <div class="field">
+                          <input type="password" id="password1" name="assword1" placeholder="Password" required >
+			                		<small class="message">error message</small>
+                      </div>
+                      <div class="field">
+                          <input type="password" id="YPass2" name="YPass2" placeholder="confirm Password" required>
+			                		<small class="message">error message</small>
+                      </div>
+                      <div class="field btn">
+                          <div class="btn-layer"></div>
+                          <input type="submit" value="Signup" >
+                      </div>
+                    </form>
+                </div>
+              </div>
+          </div>
+          </div>
+          </div>
+ <!----------x--------  Footer--------------x---------->
+        
+            <footer>
+              <div class="container">
+                <div class="row">
+                  <div class="footer-item1">
+                    <h4> <a href="home.html">Project Malasakit</a></h4>
+                    <p>Ito ay isang non-Profit Organization na nag lalayong na maghatid ng 
+                      tulong sa ating mga kababayan na naapektuhan ng pandemya.    </p>
+                    <hr>
+                  </div>
+                  <div class="footer-item2">
+                    <h4> Maki-isa</h4>
+                    <ul class="menu-list">
+                     <li><a href="{% url 'donate' %}">Donate</a></li>
+                      <li><a href="{% url 'volunteer' %}">Volunteer</a></li>
+                    </ul>
+                    <hr>
+                  </div>
+                  </div>
+                  <div class="footer-item3">
+                    <h4>Any Concern or Suggestion?</h4>
+                    <div class="contact-form">
+                      <form id="contact footer-contact" action="" method="post">
+                        <div class="row1">
+                            <fieldset>
+                              <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
+                            </fieldset>
+                         </div>
+                          <div class="row2">
+                            <fieldset>
+                              <input name="email" type="text" class="form-control" id="email" pattern="[^ @]*@[^ @]*" placeholder="E-Mail Address" required="">
+                            </fieldset>
+                          </div>
+                          <div class="row3">
+                            <fieldset>
+                              <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message" required=""></textarea>
+                            </fieldset>
+                          </div>
+                          <div class="row4">
+                            <fieldset>
+                              <button type="submit" id="form-submit" class="filled-button">Send Message</button>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </footer>
+          
+<!-- js -->
+           <script src="/static/js/indexmoto.js"></script>
+    </body>
+  </html>

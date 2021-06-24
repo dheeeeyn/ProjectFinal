@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <title> Project Malasakit</title>
+        <meta charset="utf-8">
+        <!-- CSS FILES -->
+        <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="stylesheet" href="/static/css/font.css">
+        <link rel="stylesheet" href="/static/css/responsive.css">
+        <meta name="viewport" conetent="width=device-width, intial-scle=1.0">
+    </head> 
+
+    <body>
+ <!-- back to top -->
+        <button onclick="topFunction()" id="top" title="Go to top">Back to Top</button>
+       <header class="header" id="header">
+ <!------------------------------ navigation--------------------------------------------- -->
+
+            <div class="navigation">
+                <nav class="nav_container">
+                    <div class="nav_title">
+                            <a href="http://projectmalasakit.ph/" class="nav_link">Project Malasakit</a>
+                    </div>
+
+                    <div class="nav_menu">
+                        <ul class="nav_list">
+                            <li class="nav_item">
+                                <a href="http://projectmalasakit.ph/" class="nav_link">Home</a>
+                            </li>
+                            <li class="nav_item">
+                                <a href="{% url 'donate' %}" class="nav_link">Donate</a>
+                            </li>
+                            <li class="nav_item">
+                                <a href="{% url 'volunteer' %}" class="nav_link">Volunteer</a>
+                            </li>
+                            <li class="nav_item">
+                                <a href="{% url 'profile' %}" class="nav_link">Profile</a>
+                            </li>
+                            <li class="nav_item">
+                                <a href="{% url 'login' %}" class="nav_link">Login</a>
+                            </li>
+                        </ul> 
+                    </div>
+
+ <!----------------------------- hamburger-------------------------- -->
+
+                    <div class="hamburger">
+                        <span>
+                            <img src="./img/hamburger.png" alt="hamburger">
+                        </span>
+                    </div>
+                </nav>
+            </div>
+       </header>
+       <!--------------------------- end of header--------------------------------------------->
+     <!-- welcome -->
+       <div class="display">
+          <table class="Welcome">
+            <tr>
+              <td> My Profile </td>
+            </tr>
+          </table>
+       </div>
+
+       <div class="user_table">
+        <table id="user_list_table" name="user_list_table">   
+            <tr> 
+                <td>Name:</td>
+                <td>{{ YName}} </td>
+                <td>Birthday:</td>
+                <td>{{Ybday}} </td>
+           </tr>
+            </tr>
+            <tr> 
+              <td>Gender:</td>
+              <td>{{ YGender} </td>
+              <td>Contact Number:</td>
+              <td>{{ YContact}} </td>
+            <tr>
+            
+              <td>Address:</td>
+              <td>{{ Address}} </td>
+            </tr>
+        </table>
+      </div>
+
+       <div class="profile">
+        <button class="open-button" onclick="openForm()">Update Profile Details</button>
+        <button class="open-button" >Delete Profile Details</button>
+
+        <div class="profile-popup" id="myForm">
+          <form action="/action_page.php" class="profile-container">
+            <h1>Profile Details</h1>
+        
+            <label for="YAddress"><b>Address</b></label>
+            <input type="text" placeholder="Your Full Address" name="YAddress" id="YAddress" required>
+ 
+            <label for="Ybday"><b>Birthday</b></label>
+            <input type="date"  name="Ybday" id="Yday" required>
+ 
+            <label for="YContact"><b> Contact Number</b></label>
+            <input type="tel" placeholder="09xx-xxx-xxxx" name="YContact" id="YContact" required>
+ 
+            <label for="YGender"><b>Gender</b></label>
+            <input type="text" placeholder="Male/Female" name="YGender" id="YGender" required>
+        
+            <button type="submit" class="btn">Confirm</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+          </form>
+        </div>
+ 
+       </div>
+       
+        <div class="cre_table">
+        <table id="cre_list_table" name="cre_list_table">   
+            <h1> Your Previous Volunteer Credentials</h1>
+            <tr> 
+                <td>Your Task:</td>
+                <td>{{ YTask}} </td>
+                <td>When:</td>
+                <td>{{YWhen}} </td>
+                <td>Where:</td>
+                <td>{{YWhere}} </td>
+           </tr>
+
+              
+        </table>
+      </div>
+
+      <button class="open-button" onclick="openCred()">Update Credentials</button>
+        <button class="open-button" >Delete Credentials</button>
+
+         <div class="profile-popup" id="myCred">
+          <form action="/action_page.php" class="profile-container">
+            <h1>Volunteer Credentials</h1>
+        
+            <label for="YTask"><b> Your Task</b></label>
+            <input type="text" placeholder="Your Task" name="YTask" id="YTask" required>
+ 
+            <label for="YWhen"><b>When</b></label>
+            <input type="date"  name="YWhen" id="YWhen" required>
+
+            <label for="YWhere"><b> Where</b></label>
+            <input type="text" placeholder="Location" name="YWhere" id="YWhere" required>
+ 
+            <button type="submit" class="btn">Confirm</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+          </form>
+        </div>
+ 
+       </div>
+
+       <div class="total">
+          <h1> Your Total Volunteer Duties:</h1>
+          <h2> {Interest}/ items</h2>
+        </div>
+
+       <div class="V_Info_Table">
+        <table id="v_info_list_table" name="v_info_list_table">
+            <tr>
+                <th> Volunteer Interest</th>
+                <th> Schedule </th>
+                <th> Branch </th>
+                <th> Status </th>
+            </tr>    
+
+                <!-- {% for item in vId.item_set.all %} -->
+            <tr>
+
+                 <td>{{ forloop.counter }}: {{ item.text }}</td>
+                <td>{{ item.Sched }} </td>
+                <td>{{ item.schedT }} </td>
+            </tr>
+               <!-- {% endfor %} -->
+        </table>
+      </div>
+
+
+        <div class="total">
+          <h1> Your Total Donations:</h1>
+          <h2> { Quantity}/ items</h2>
+        </div>
+
+       <div class="V_Info_Table">
+        <table id="v_info_list_table" name="v_info_list_table">
+            <tr>
+                <th> Type of Food</th>
+                <th> Quantity </th>
+                <th> Branch </th>
+                <th> Status </th>
+            </tr>    
+
+                <!-- {% for item in vId.item_set.all %} -->
+            <tr>
+
+                 <td>{{ forloop.counter }}: {{ item.text }}</td>
+                <td>{{ item.Sched }} </td>
+                <td>{{ item.schedT }} </td>
+            </tr>
+               <!-- {% endfor %} -->
+        </table>
+    </div>
+       
+ <!----------x--------  Footer--------------x---------->
+        
+ <footer>
+  <div class="container">
+    <div class="row">
+      <div class="footer-item1">
+        <h4> <a href="home.html">Project Malasakit</a></h4>
+        <p>Ito ay isang non-Profit Organization na nag lalayong na maghatid ng
+           tulong sa ating mga kababayan na naapektuhan ng pandemya.   </p>
+        <hr>
+      </div>
+      <div class="footer-item2">
+        <h4> Maki-isa</h4>
+        <ul class="menu-list">
+           <li><a href="{% url 'donate' %}">Donate</a></li>
+            <li><a href="{% url 'volunteer' %}">Volunteer</a></li>
+        </ul>
+        <hr>
+      </div>
+      </div>
+      <div class="footer-item3">
+        <h4>Any Concern or Suggestion?</h4>
+        <div class="contact-form">
+          <form id="contact footer-contact" action="" method="post">
+            <div class="row1">
+                <fieldset>
+                  <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
+                </fieldset>
+             </div>
+              <div class="row2">
+                <fieldset>
+                  <input name="email" type="text" class="form-control" id="email" pattern="[^ @]*@[^ @]*" placeholder="E-Mail Address" required="">
+                </fieldset>
+              </div>
+              <div class="row3">
+                <fieldset>
+                  <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message" required=""></textarea>
+                </fieldset>
+              </div>
+              <div class="row4">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="filled-button">Send Message</button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- js -->
+        <script src="/static/js/indexmoto.js"></script>
+
+</body>
+</html>

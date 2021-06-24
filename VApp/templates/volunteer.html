@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <title> Project Malasakit</title>
+        <meta charset="utf-8">
+        <!-- CSS FILES -->
+           <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="stylesheet" href="/static/css/font.css">
+        <link rel="stylesheet" href="/static/css/responsive.css">
+        <meta name="viewport" conetent="width=device-width, intial-scle=1.0">
+    </head> 
+
+    <body>
+ <!-- back to top -->
+        <button onclick="topFunction()" id="top" title="Go to top">Back to Top</button>
+       <header class="header" id="header">
+ <!------------------------------ navigation--------------------------------------------- -->
+
+            <div class="navigation">
+                <nav class="nav_container">
+                    <div class="nav_title">
+                            <a href="http://projectmalasakit.ph/" class="nav_link">Project Malasakit</a>
+                    </div>
+
+                     <div class="nav_menu">
+                        <ul class="nav_list">
+                            <li class="nav_item">
+                                <a href="http://projectmalasakit.ph/" class="nav_link">Home</a>
+                            </li>
+                            <li class="nav_item">
+                                <a href="{% url 'donate' %}" class="nav_link">Donate</a>
+                            </li>
+                            <li class="nav_item">
+                                <a href="{% url 'volunteer' %}" class="nav_link">Volunteer</a>
+                            </li>
+                            <li class="nav_item">
+                                <a href="{% url 'profile' %}" class="nav_link">Profile</a>
+                            </li>
+                            <li class="nav_item">
+                                <a href="{% url 'login' %}" class="nav_link">Login</a>
+                            </li>
+                        </ul> 
+                    </div>
+
+ <!----------------------------- hamburger-------------------------- -->
+
+                    <div class="hamburger">
+                        <span>
+                            <img src="./img/hamburger.png" alt="hamburger">
+                        </span>
+                    </div>
+                </nav>
+            </div>
+       </header>
+       <!--------------------------- end of header--------------------------------------------->
+     <!-- welcome -->
+       <div class="display">
+        <table class="Welcome">
+          <tr>
+            <td> Welcome, </td>
+            <td> {{ name }} </td>
+          </tr>
+       </table>
+
+       </div>
+
+
+
+          <div class="Vpadding">
+            <div class="volunteer">         
+                <div class="volunteer-container">
+                    <div class="volunteer-box">
+                        <!-- VApp/newList_url/ -->
+                        <form method="POST" action="/VApp/{{ vId.id }}/volunteer">
+                            <h2><strong>Volunteer</strong> Task Log</h2>
+                            <!-- next page -->
+                            <label for="VTask"> Volunteer Interest:</label>
+                            <br>
+                            <input type="text" id="VTask" name="VTask" placeholder="(Ex. Event Organizer, Repacking Team, Researcher)" required>
+                            <br>
+    
+                            <label for="VSched"> Target Schedule:</label>
+                            <br>
+                                <select name="VSched" id="VSched">
+                                  <option value="Monday">Monday</option>
+                                  <option value="Wednesday">Wednesday</option>
+                                  <option value="Friday">Friday</option>
+                                  <option value="Saturday">Saturday</option>
+                                </select>
+                            <br>
+    
+                            <label for="VBranch"> Branch:</label>
+                            <br>
+                               <br>
+                                <select name="VBranch" id="VBranch" required>
+                                  <option value="Bayan">Bayan</option>
+                                  <option value="Paliparan 2">Paliparan 2</option>
+                                  <option value="Area 1">Area 1</option>
+                                </select>
+                            <br>
+                            <br>
+                             <input type="submit"  id="btnRegister" value="Register">
+                             <input type="hidden">
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                </div>
+            </div>  
+          </div>
+
+
+          <div class="V_Info_Table">
+            <table id="v_info_list_table" name="v_info_list_table">
+                <tr>
+                    
+                    <th> Volunteer Interest</th>
+                    <th> Task Created</th>
+                    <th> Target Schedule </th>
+                    <th> Branch </th>
+                    <th> Status </th>
+                </tr>    
+
+                    <!-- {% for item in vId.item_set.all %} -->
+                <tr>
+               
+                     <td>{{ forloop.counter }}: {{ item.VTask}}</td>
+                     <td>{{ item.VSched_create}} </td>
+                    <td>{{ item.YSched }} </td>
+                    <td>{{ item.YBranch }} </td>
+                </tr>
+                   <!-- {% endfor %} -->
+            </table>
+        </div>
+ <!----------x--------  Footer--------------x---------->
+        
+ <footer>
+  <div class="container">
+    <div class="row">
+      <div class="footer-item1">
+        <h4> <a href="home.html">Project Malasakit</a></h4>
+        <p>Ito ay isang non-Profit Organization na nag lalayong na maghatid ng
+           tulong sa ating mga kababayan na naapektuhan ng pandemya.   </p>
+        <hr>
+      </div>
+      <div class="footer-item2">
+        <h4> Maki-isa</h4>
+        <ul class="menu-list">
+            <li><a href="{% url 'donate' %}">Donate</a></li>
+             <li><a href="{% url 'volunteer' %}">Volunteer</a></li>
+        </ul>
+        <hr>
+      </div>
+      </div>
+      <div class="footer-item3">
+        <h4>Any Concern or Suggestion?</h4>
+        <div class="contact-form">
+          <form id="contact footer-contact" action="" method="post">
+            <div class="row1">
+                <fieldset>
+                  <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
+                </fieldset>
+             </div>
+              <div class="row2">
+                <fieldset>
+                  <input name="email" type="text" class="form-control" id="email" pattern="[^ @]*@[^ @]*" placeholder="E-Mail Address" required="">
+                </fieldset>
+              </div>
+              <div class="row3">
+                <fieldset>
+                  <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message" required=""></textarea>
+                </fieldset>
+              </div>
+              <div class="row4">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="filled-button">Send Message</button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- js -->
+        <script src="/static/js/indexmoto.js"></script>
+
+</body>
+</html>

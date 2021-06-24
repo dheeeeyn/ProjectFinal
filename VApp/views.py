@@ -1,10 +1,29 @@
 from django.shortcuts import redirect, render
-from VApp.models import Item, Volunteer
+from VApp.models import User, Volunteer, Donation, Profile, Contact
 #from django.http import HttpResponse
 
+def Home(request):
+	return render(request, 'home.html')
 
-def VolunteerForm(request):
-	return render(request, 'volunteerform.html')
+def Donate(request):
+	return render(request, 'donate.html')
+
+def Volunteer(request):
+	return render(request, 'volunteer.html')
+	# vId = Volunteer.objects.get(id=VProfile)
+	# Item.objects.create(VProfile=vId, VTask=request.POST['VTask'], VSched_create=request.POST['VSched_create'],VSched=request.POST['VSched'],schedT=request.POST['VBranch'])
+	# return redirect(f'/VApp/{vId.id}/')
+
+def Profile(request):
+	return render(request, 'profile.html')
+
+def Login(request):
+	return render(request, 'login.html')	
+
+
+
+# def VolunteerForm(request):
+# 	return render(request, 'volunteerform.html')
 	# if request.method == 'POST':
 	# 	Item.objects.create(text=request.POST['Vinterest'])
 	# 	#return redirect('/')
@@ -14,21 +33,21 @@ def VolunteerForm(request):
 	
 
 
-def ViewList(request,VolId):
-	vId = Volunteer.objects.get(id=VolId)
-	#items = Item.objects.all()
-	#items = Item.objects.filter(VolId=vId)
-	return render(request, 'volunteerinfo.html',{'vId': vId,'Dsched':'Sched', 'Tsched': 'schedT'})
+# def ViewList(request,VolId):
+# 	vId = Volunteer.objects.get(id=VolId)
+# 	#items = Item.objects.all()
+# 	#items = Item.objects.filter(VolId=vId)
+# 	return render(request, 'volunteerinfo.html',{'vId': vId,'Dsched':'Sched', 'Tsched': 'schedT'})
 
-def NewList(request):
-	newVolunteer = Volunteer.objects.create()
-	Item.objects.create(VolId=newVolunteer, text=request.POST['Vinterest'], Sched=request.POST['Dsched'], schedT=request.POST['Tsched'])
-	return redirect(f'/VApp/{newVolunteer.id}/')
+# def NewList(request):
+# 	newVolunteer = Volunteer.objects.create()
+# 	Item.objects.create(VolId=newVolunteer, text=request.POST['Vinterest'], Sched=request.POST['Dsched'], schedT=request.POST['Tsched'])
+# 	return redirect(f'/VApp/{newVolunteer.id}/')
 
-def VolList(request,VolId):
-	vId = Volunteer.objects.get(id=VolId)
-	Item.objects.create(VolId=vId, text=request.POST['Vinterest'], Sched=request.POST['Dsched'],schedT=request.POST['Tsched'])
-	return redirect(f'/VApp/{vId.id}/')
+# def VolList(request,VolId):
+# 	vId = Volunteer.objects.get(id=VolId)
+# 	Item.objects.create(VolId=vId, text=request.POST['Vinterest'], Sched=request.POST['Dsched'],schedT=request.POST['Tsched'])
+# 	return redirect(f'/VApp/{vId.id}/')
 
 
 # def VolunteerForm(request):

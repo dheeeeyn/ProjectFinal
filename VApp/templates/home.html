@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html> 
+    <head>
+        <title> Project Malasakit</title>
+        <meta charset="utf-8">
+        <!-- CSS FILES -->
+        <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="stylesheet" href="/static/css/font.css">
+        <link rel="stylesheet" href="/static/css/responsive.css">
+        <meta name="viewport" conetent="width=device-width, intial-scle=1.0">
+    </head> 
+
+    <body>
+ <!-- back to top -->
+        <button onclick="topFunction()" id="top" title="Go to top">Back to Top</button>
+       <header class="header" id="header">
+ <!------------------------------ navigation--------------------------------------------- -->
+
+            <div class="navigation">
+                <nav class="nav_container">
+                    <div class="nav_title">
+                            <a href="http://projectmalasakit.ph/" class="nav_link">Project Malasakit</a>
+                    </div>
+
+                    <div class="nav_menu">
+                        <ul class="nav_list">
+                            <li class="nav_item">
+                                <a href="http://projectmalasakit.ph/" class="nav_link">Home</a>
+                            </li>
+                            <li class="nav_item">
+                                <a href="{% url 'donate' %}" class="nav_link">Donate</a>
+                            </li>
+                            <li class="nav_item">
+                                <a href="{% url 'volunteer' %}" class="nav_link">Volunteer</a>
+                            </li>
+                            <li class="nav_item">
+                                <a href="{% url 'profile' %}" class="nav_link">Profile</a>
+                            </li>
+                            <li class="nav_item">
+                                <a href="{% url 'login' %}" class="nav_link">Login</a>
+                            </li>
+                        </ul> 
+                    </div>
+
+ <!----------------------------- hamburger-------------------------- -->
+
+                    <div class="hamburger">
+                        <span>
+                            <img src="/static/img/hamburger.png" alt="hamburger">
+                        </span>
+                    </div>
+                </nav>
+            </div>
+       </header>
+
+<!------------------ site title ------------------------>
+
+        <main>
+    
+
+            <section class="site-title">
+                <div class="site-background">
+                    <h1>Bayanihan. Tulungan. Malasakit.</h1>
+                    <h3>Halina't Maki-isa!</h3>
+                    <button onclick=location.href="{% url 'donate' %}" class="btn">Donate</button>
+                    <button onclick=location.href="{% url 'volunteer' %}" class="btn">Volunteer</button>
+                </div>
+            </section>
+
+             
+<!------------------  About------------------------>
+
+           <div class="heading">
+               <h2>Sino nga ba ang </h2>
+               <h3> Project<strong> Malasakit</strong> </h3>
+            </div>
+            
+            <div class="about">
+                <div class="container">
+                  <div class="content">
+                      <div class="img-1">
+                        <div class="img">
+                              <img src="/static/img/about1.jpg" alt="me">
+                         </div>
+                         <div class="text-content">
+                              <h2> Project <strong>Malasakit</strong></h2>
+                              <p> Ito ay isang non-Profit Organization na nag lalayong na maghatid ng tulong sa ating mga kababayan na naapektuhan ng pandemya. Sino man ay mamaring maki-isa sa aming layon sa pamamagitan ng pag dodonate ng mga pagkain o kaya sa pag vovolunteer. Lahat ng malilikom na donation ay makaksiguradong makakarating sa ating mga kababayan. </p>
+                              <a href="#" class="filled-button1">Donate </a>
+                              /
+                              <a href="#" class="filled-button"> Volunteer </a>
+                         </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </main>
+
+ <!----------x--------  Footer--------------x---------->
+        
+            <footer>
+              <div class="container">
+                <div class="row">
+                  <div class="footer-item1">
+                    <h4> <a href="home.html">Project Malasakit</a></h4>
+                    <p>Ito ay isang non-Profit Organization na nag lalayong na maghatid ng tulong sa ating mga kababayan
+                       na naapektuhan ng pandemya.   </p>
+                    <hr>
+                  </div>
+                  <div class="footer-item2">
+                    <h4> Maki-isa</h4>
+                    <ul class="menu-list">
+                      <li><a href="{% url 'donate' %}">Donate</a></li>
+                      <li><a href="{% url 'volunteer' %}">Volunteer</a></li>
+                    </ul>
+                    <hr>
+                  </div>
+                  </div>
+                  <div class="footer-item3">
+                    <h4>Any Concern or Suggestion?</h4>
+                    <div class="contact-form">
+                      <form id="contact footer-contact" action="" method="post">
+                        <div class="row1">
+                            <fieldset>
+                              <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
+                            </fieldset>
+                         </div>
+                          <div class="row2">
+                            <fieldset>
+                              <input name="email" type="text" class="form-control" id="email" pattern="[^ @]*@[^ @]*" placeholder="E-Mail Address" required="">
+                            </fieldset>
+                          </div>
+                          <div class="row3">
+                            <fieldset>
+                              <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message" required=""></textarea>
+                            </fieldset>
+                          </div>
+                          <div class="row4">
+                            <fieldset>
+                              <button type="submit" id="form-submit" class="filled-button">Send Message</button>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </footer>
+          
+<!-- js -->
+        <script src="/static/js/indexmoto.js"></script>
+
+    </body>
+  </html>
