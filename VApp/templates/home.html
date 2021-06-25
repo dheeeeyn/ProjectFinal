@@ -38,6 +38,9 @@
                                 <a href="{% url 'profile' %}" class="nav_link">Profile</a>
                             </li>
                             <li class="nav_item">
+                                <a href="{% url 'contact' %}" class="nav_link">Contact Us</a>
+                            </li>
+                            <li class="nav_item">
                                 <a href="{% url 'login' %}" class="nav_link">Login</a>
                             </li>
                         </ul> 
@@ -86,9 +89,9 @@
                          <div class="text-content">
                               <h2> Project <strong>Malasakit</strong></h2>
                               <p> Ito ay isang non-Profit Organization na nag lalayong na maghatid ng tulong sa ating mga kababayan na naapektuhan ng pandemya. Sino man ay mamaring maki-isa sa aming layon sa pamamagitan ng pag dodonate ng mga pagkain o kaya sa pag vovolunteer. Lahat ng malilikom na donation ay makaksiguradong makakarating sa ating mga kababayan. </p>
-                              <a href="#" class="filled-button1">Donate </a>
+                              <a href="{% url 'donate' %}" class="filled-button1">Donate </a>
                               /
-                              <a href="#" class="filled-button"> Volunteer </a>
+                              <a href="{% url 'volunteer' %}" class="filled-button"> Volunteer </a>
                          </div>
                       </div>
                   </div>
@@ -99,53 +102,30 @@
  <!----------x--------  Footer--------------x---------->
         
             <footer>
-              <div class="container">
+            <div class="container">
                 <div class="row">
-                  <div class="footer-item1">
-                    <h4> <a href="home.html">Project Malasakit</a></h4>
-                    <p>Ito ay isang non-Profit Organization na nag lalayong na maghatid ng tulong sa ating mga kababayan
-                       na naapektuhan ng pandemya.   </p>
-                    <hr>
-                  </div>
-                  <div class="footer-item2">
-                    <h4> Maki-isa</h4>
-                    <ul class="menu-list">
-                      <li><a href="{% url 'donate' %}">Donate</a></li>
-                      <li><a href="{% url 'volunteer' %}">Volunteer</a></li>
-                    </ul>
-                    <hr>
-                  </div>
-                  </div>
-                  <div class="footer-item3">
-                    <h4>Any Concern or Suggestion?</h4>
-                    <div class="contact-form">
-                      <form id="contact footer-contact" action="" method="post">
-                        <div class="row1">
-                            <fieldset>
-                              <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
-                            </fieldset>
-                         </div>
-                          <div class="row2">
-                            <fieldset>
-                              <input name="email" type="text" class="form-control" id="email" pattern="[^ @]*@[^ @]*" placeholder="E-Mail Address" required="">
-                            </fieldset>
-                          </div>
-                          <div class="row3">
-                            <fieldset>
-                              <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message" required=""></textarea>
-                            </fieldset>
-                          </div>
-                          <div class="row4">
-                            <fieldset>
-                              <button type="submit" id="form-submit" class="filled-button">Send Message</button>
-                            </fieldset>
-                          </div>
-                        </div>
-                      </form>
+                    <div class="footer-item1">
+                        <h4> <a href="home.html">Project Malasakit</a></h4>
+                        <p>Ito ay isang non-Profit Organization na nag lalayong na maghatid ng tulong sa ating mga kababayan
+                           na naapektuhan ng pandemya.   </p>
+                        <hr>
                     </div>
-                  </div>
+                    <div class="footer-item2">
+                        <h4> Maki-isa</h4>
+                        <ul class="menu-list">
+                            <li><a href="{% url 'donate' %}">Donate</a></li>
+                            <li><a href="{% url 'volunteer' %}">Volunteer</a></li>
+                        </ul>
+                    <hr>
+                    </div>
                 </div>
-              </div>
+                    <div class="footer-item3">
+                        <h4>Any Concern or Suggestion?</h4>
+                        <div class="contact-form">
+                            <button type="submit"  id="form-submit" class="filled-button" onclick=location.href="{% url 'contact' %}">Send Message</button>
+                         </div>
+                    </div>
+            </div>
             </footer>
           
 <!-- js -->

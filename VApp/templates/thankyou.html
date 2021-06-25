@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html> 
     <head>
@@ -49,62 +50,28 @@
 
                     <div class="hamburger">
                         <span>
-                            <img src="./img/hamburger.png" alt="hamburger">
+                            <img src="/static/img/hamburger.png" alt="hamburger">
                         </span>
                     </div>
                 </nav>
             </div>
        </header>
 
-<!------------------ login ------------------------>
-       <div class="part">
-         <h1> Be Part of <strong> Us</strong></h1>
-       </div>
+<!------------------ site title ------------------------>
 
-        <div class="login">
-          <div class="log">
-            <div class="wrapper">
-              <div class="title-text">
-                <div class="title login">
-                    Login Form
-                </div>
-                <div class="title signup">
-                    Signup Form
-                </div>
-              </div>
-              <div class="form-container">
-                <div class="slide-controls">
-                    <input type="radio" name="slide" id="login" >
-                    <input type="radio" name="slide" id="signup" onclick=location.href="{% url 'signup' %}">
-                    <label for="login" class="slide login">Login</label>
-                    <label for="signup" class="slide signup">Signup</label>
-                    <div class="slider-tab"></div>
-                </div>
-                <div class="form-inner">
-                    <form method="POST" action="" class="login" onsubmit="return validate()">
-                      <div class="field">
-                          <input type="text" id="YEmail" name="YEmail" placeholder="Email Address" required>
-			                		<!-- <small class="message">error message</small> -->
-                      </div>
-                      <div class="field">
-                          <input type="password" id="YPass" name="YPass"placeholder="Password" required>
-			                		<!-- <small class="message">error message</small> -->
-                      </div>
-                      <div class="field btn">
-                          <div class="btn-layer"></div>
-                          <input type="submit" value="Login">
-                      </div>
-                      <div class="signup-link">
-                          Not a member? <a href="{% url 'signup' %}">Signup now</a>
-                      </div>
+        <main>
+    
 
-                      {% csrf_token %}
-                   
+            <section class="site-title">
+                <div class="site-background">
+                    <h3>Message Succesfully Sent!</h3>
+                    <h1> Thankyou!</h1>
+                    
                 </div>
-              </div>
-          </div>
-          </div>
-          </div>
+            </section>
+
+             
+
  <!----------x--------  Footer--------------x---------->
         
  <footer>
@@ -120,7 +87,7 @@
                         <h4> Maki-isa</h4>
                         <ul class="menu-list">
                             <li><a href="{% url 'donate' %}">Donate</a></li>
-                           <li><a href="{% url 'volunteer' %}">Volunteer</a></li>
+                            <li><a href="{% url 'volunteer' %}">Volunteer</a></li>
                         </ul>
                     <hr>
                     </div>
@@ -128,14 +95,14 @@
                     <div class="footer-item3">
                         <h4>Any Concern or Suggestion?</h4>
                         <div class="contact-form">
-                            <button type="submit" id="form-submit" class="filled-button"onclick=location.href="{% url 'contact' %}">Send Message</button>
+                            <button type="submit" id="form-submit" class="filled-button" onclick=location.href="{% url 'contact' %}">Send Message</button>
                          </div>
                     </div>
             </div>
             </footer>
           
-          
 <!-- js -->
-           <script src="/static/js/indexmoto.js"></script>
+        <script src="/static/js/indexmoto.js"></script>
+
     </body>
   </html>

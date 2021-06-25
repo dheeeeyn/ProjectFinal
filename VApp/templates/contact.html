@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html> 
     <head>
         <title> Project Malasakit</title>
         <meta charset="utf-8">
         <!-- CSS FILES -->
-        <link rel="stylesheet" href="/static/css/style.css">
+           <link rel="stylesheet" href="/static/css/style.css">
         <link rel="stylesheet" href="/static/css/font.css">
         <link rel="stylesheet" href="/static/css/responsive.css">
         <meta name="viewport" conetent="width=device-width, intial-scle=1.0">
@@ -22,7 +23,7 @@
                             <a href="http://projectmalasakit.ph/" class="nav_link">Project Malasakit</a>
                     </div>
 
-                    <div class="nav_menu">
+                     <div class="nav_menu">
                         <ul class="nav_list">
                             <li class="nav_item">
                                 <a href="http://projectmalasakit.ph/" class="nav_link">Home</a>
@@ -55,55 +56,51 @@
                 </nav>
             </div>
        </header>
+       <!--------------------------- end of header--------------------------------------------->
+     <!-- welcome -->
+       <div class="display">
+        <table class="Welcome">
+          <tr>
+            <td> Welcome, </td>
+          </tr>
+       </table>
 
-<!------------------ login ------------------------>
-       <div class="part">
-         <h1> Be Part of <strong> Us</strong></h1>
        </div>
 
-        <div class="login">
-          <div class="log">
-            <div class="wrapper">
-              <div class="title-text">
-                <div class="title login">
-                    Login Form
-                </div>
-                <div class="title signup">
-                    Signup Form
-                </div>
-              </div>
-              <div class="form-container">
-                <div class="slide-controls">
-                    <input type="radio" name="slide" id="login" >
-                    <input type="radio" name="slide" id="signup" onclick=location.href="{% url 'signup' %}">
-                    <label for="login" class="slide login">Login</label>
-                    <label for="signup" class="slide signup">Signup</label>
-                    <div class="slider-tab"></div>
-                </div>
-                <div class="form-inner">
-                    <form method="POST" action="" class="login" onsubmit="return validate()">
-                      <div class="field">
-                          <input type="text" id="YEmail" name="YEmail" placeholder="Email Address" required>
-			                		<!-- <small class="message">error message</small> -->
-                      </div>
-                      <div class="field">
-                          <input type="password" id="YPass" name="YPass"placeholder="Password" required>
-			                		<!-- <small class="message">error message</small> -->
-                      </div>
-                      <div class="field btn">
-                          <div class="btn-layer"></div>
-                          <input type="submit" value="Login">
-                      </div>
-                      <div class="signup-link">
-                          Not a member? <a href="{% url 'signup' %}">Signup now</a>
-                      </div>
 
-                      {% csrf_token %}
-                   
+
+          <div class="Vpadding">
+            <div class="volunteer">         
+                <div class="volunteer-container">
+                    <div class="volunteer-box">
+                        <!-- VApp/newList_url/ -->
+                        <form method="POST" action="{% url 'thankyou' %}">
+                            <h2>Any concern or suggestion?</h2>
+                            <h2><strong>Contact Us</strong> </h2>                         
+                            <label for="name"> Volunteer Interest:</label>
+                            <br>
+                            <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+                            <br>
+                             <label for="email"> Email</label>
+                            <br>
+                            <input type="email" id="email" name="email" pattern="[^ @]*@[^ @]*" placeholder="E-Mail Address" required>
+                            <br>
+                            <label for="message"> Message</label>
+                            <fieldset>
+                              <textarea name="message" id="message" placeholder="Your Message" required>
+                              </textarea>
+                            </fieldset>
+                    </div>
+    
+                            <br>
+                            <br>
+                             <input type="submit"  id="btnRegister" value="Send Message">
+                             <input type="hidden">
+                            {% csrf_token %}
+                        </form>
+                    </div>
                 </div>
-              </div>
-          </div>
-          </div>
+            </div>  
           </div>
  <!----------x--------  Footer--------------x---------->
         
@@ -119,8 +116,8 @@
                     <div class="footer-item2">
                         <h4> Maki-isa</h4>
                         <ul class="menu-list">
-                            <li><a href="{% url 'donate' %}">Donate</a></li>
-                           <li><a href="{% url 'volunteer' %}">Volunteer</a></li>
+                          <li><a href="{% url 'donate' %}">Donate</a></li>
+                         <li><a href="{% url 'volunteer' %}">Volunteer</a></li>
                         </ul>
                     <hr>
                     </div>
@@ -134,8 +131,9 @@
             </div>
             </footer>
           
-          
+
 <!-- js -->
-           <script src="/static/js/indexmoto.js"></script>
-    </body>
-  </html>
+        <script src="/static/js/indexmoto.js"></script>
+
+</body>
+</html>

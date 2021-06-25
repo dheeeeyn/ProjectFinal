@@ -36,6 +36,9 @@
                             <li class="nav_item">
                                 <a href="{% url 'profile' %}" class="nav_link">Profile</a>
                             </li>
+                             <li class="nav_item">
+                                <a href="{% url 'contact' %}" class="nav_link">Contact Us</a>
+                            </li>
                             <li class="nav_item">
                                 <a href="{% url 'login' %}" class="nav_link">Login</a>
                             </li>
@@ -73,7 +76,7 @@
             </tr>
             <tr> 
               <td>Gender:</td>
-              <td>{{ YGender} </td>
+              <td>{{ YGender}} </td>
               <td>Contact Number:</td>
               <td>{{ YContact}} </td>
             <tr>
@@ -84,11 +87,13 @@
         </table>
       </div>
 
-       <div class="profile">
-        <button class="open-button" onclick="openForm()">Update Profile Details</button>
+           </div>
+
+      <div class="profile">
+        <button class="open-button" onclick="openProf()">Update Profile Details</button>
         <button class="open-button" >Delete Profile Details</button>
 
-        <div class="profile-popup" id="myForm">
+        <div class="profile-popup" id="myProf">
           <form action="/action_page.php" class="profile-container">
             <h1>Profile Details</h1>
         
@@ -105,11 +110,11 @@
             <input type="text" placeholder="Male/Female" name="YGender" id="YGender" required>
         
             <button type="submit" class="btn">Confirm</button>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+             <button type="button" class="btn cancel" onclick="closeProf()">Close</button>
           </form>
         </div>
  
-       </div>
+       </div> 
        
         <div class="cre_table">
         <table id="cre_list_table" name="cre_list_table">   
@@ -204,54 +209,32 @@
  <!----------x--------  Footer--------------x---------->
         
  <footer>
-  <div class="container">
-    <div class="row">
-      <div class="footer-item1">
-        <h4> <a href="home.html">Project Malasakit</a></h4>
-        <p>Ito ay isang non-Profit Organization na nag lalayong na maghatid ng
-           tulong sa ating mga kababayan na naapektuhan ng pandemya.   </p>
-        <hr>
-      </div>
-      <div class="footer-item2">
-        <h4> Maki-isa</h4>
-        <ul class="menu-list">
-           <li><a href="{% url 'donate' %}">Donate</a></li>
-            <li><a href="{% url 'volunteer' %}">Volunteer</a></li>
-        </ul>
-        <hr>
-      </div>
-      </div>
-      <div class="footer-item3">
-        <h4>Any Concern or Suggestion?</h4>
-        <div class="contact-form">
-          <form id="contact footer-contact" action="" method="post">
-            <div class="row1">
-                <fieldset>
-                  <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
-                </fieldset>
-             </div>
-              <div class="row2">
-                <fieldset>
-                  <input name="email" type="text" class="form-control" id="email" pattern="[^ @]*@[^ @]*" placeholder="E-Mail Address" required="">
-                </fieldset>
-              </div>
-              <div class="row3">
-                <fieldset>
-                  <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message" required=""></textarea>
-                </fieldset>
-              </div>
-              <div class="row4">
-                <fieldset>
-                  <button type="submit" id="form-submit" class="filled-button">Send Message</button>
-                </fieldset>
-              </div>
+            <div class="container">
+                <div class="row">
+                    <div class="footer-item1">
+                        <h4> <a href="home.html">Project Malasakit</a></h4>
+                        <p>Ito ay isang non-Profit Organization na nag lalayong na maghatid ng tulong sa ating mga kababayan
+                           na naapektuhan ng pandemya.   </p>
+                        <hr>
+                    </div>
+                    <div class="footer-item2">
+                        <h4> Maki-isa</h4>
+                        <ul class="menu-list">
+                          <li><a href="{% url 'donate' %}">Donate</a></li>
+                         <li><a href="{% url 'volunteer' %}">Volunteer</a></li>
+                        </ul>
+                    <hr>
+                    </div>
+                </div>
+                    <div class="footer-item3">
+                        <h4>Any Concern or Suggestion?</h4>
+                        <div class="contact-form">
+                            <button type="submit" id="form-submit" class="filled-button"onclick=location.href="{% url 'contact' %}">Send Message</button>
+                         </div>
+                    </div>
             </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
+            </footer>
+          
 
 <!-- js -->
         <script src="/static/js/indexmoto.js"></script>

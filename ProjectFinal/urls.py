@@ -6,8 +6,14 @@ urlpatterns = [
     url(r'^$', views.Home, name='home'),
     url(r'^VApp/donate$', views.Donate, name='donate'),
     url(r'^VApp/volunteer$', views.Volunteer, name='volunteer'),
-    url(r'^VApp/profile$', views.Profile, name='profile'),
+    url(r'^VApp/profile$', views.Your_Profile, name='profile'),
     url(r'^VApp/login$', views.Login, name='login'),
+    url(r'^VApp/signup$', views.Your_sign, name='signup'),
+    # url(r'^VApp/addsign$', views.Add_sign, name='addsign'),
+    # url(r'^VApp/usesign$', views.Use_sign, name='usesign'),
+    url(r'^VApp/contact/$', views.Your_Contact, name='contact'),
+    url(r'^VApp/thankyou$', views.addContact, name='thankyou'),
+    url(r'^VApp/tyu/$', views.thankyou, name='tyu'),
     url('admin/', admin.site.urls),
 ]
 

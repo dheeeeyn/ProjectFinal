@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from VApp.models import User, Volunteer, Donation, Profile, Contact
-#from django.http import HttpResponse
+# from django.http import HttpResponse
 
 def Home(request):
 	return render(request, 'home.html')
@@ -10,16 +10,43 @@ def Donate(request):
 
 def Volunteer(request):
 	return render(request, 'volunteer.html')
-	# vId = Volunteer.objects.get(id=VProfile)
-	# Item.objects.create(VProfile=vId, VTask=request.POST['VTask'], VSched_create=request.POST['VSched_create'],VSched=request.POST['VSched'],schedT=request.POST['VBranch'])
-	# return redirect(f'/VApp/{vId.id}/')
 
-def Profile(request):
+def Your_Profile(request):
 	return render(request, 'profile.html')
 
 def Login(request):
-	return render(request, 'login.html')	
+	return render(request, 'login.html')
 
+
+# sign in
+def Your_sign(request):
+	return render(request, 'signup.html')
+	if request.method == 'POST':
+		User.objects.create(YName=request.POST['YName'], email=request.POST['email'], password1=request.POST['password1'])
+		return redirect('/VApp/login/')
+	signup = User.objects.all()
+	return render(request, 'login.html')
+
+# def Add_sign(request):
+# 	User.objects.create(YName=request.POST['YName'], email=request.POST['email'], password1=request.POST['password1'])
+# 	return redirect(f'usesign/')
+
+# def Use_sign(request):
+# 	signup = User.objects.all()
+# 	return render(request, 'login.html')
+
+
+# contact
+def Your_Contact(request):
+	return render(request, 'contact.html')
+
+def addContact(request):
+	Contact.objects.create(name=request.POST['name'], email=request.POST['email'], message=request.POST['message'])
+	return redirect(f'tyu/')
+	
+def thankyou(request):
+	message = Contact.objects.all()
+	return render(request,'thankyou.html')
 
 
 # def VolunteerForm(request):

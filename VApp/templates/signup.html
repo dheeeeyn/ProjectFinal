@@ -65,41 +65,43 @@
           <div class="log">
             <div class="wrapper">
               <div class="title-text">
-                <div class="title login">
-                    Login Form
-                </div>
                 <div class="title signup">
                     Signup Form
                 </div>
               </div>
               <div class="form-container">
                 <div class="slide-controls">
-                    <input type="radio" name="slide" id="login" >
-                    <input type="radio" name="slide" id="signup" onclick=location.href="{% url 'signup' %}">
+                    <input type="radio" name="slide" id="login" onclick=location.href="{% url 'login' %}">
+                    <input type="radio" name="slide" id="signup" checked>
                     <label for="login" class="slide login">Login</label>
                     <label for="signup" class="slide signup">Signup</label>
                     <div class="slider-tab"></div>
                 </div>
+
                 <div class="form-inner">
-                    <form method="POST" action="" class="login" onsubmit="return validate()">
+                    <form  method= "POST "action="{% url 'login' %}" class="signup" onclick="validate()">
                       <div class="field">
-                          <input type="text" id="YEmail" name="YEmail" placeholder="Email Address" required>
-			                		<!-- <small class="message">error message</small> -->
+                        <input type="text" id="YName" name="YName" placeholder="Name" required >
+			                		<small class="message">error message</small>
                       </div>
                       <div class="field">
-                          <input type="password" id="YPass" name="YPass"placeholder="Password" required>
-			                		<!-- <small class="message">error message</small> -->
+                          <input type="email" id="email" name="email" placeholder="Email Address"required>
+			                		<small class="message">error message</small>
+                      </div>
+                      <div class="field">
+                          <input type="password" id="password1" name="password1" placeholder="Password" required >
+			                		<small class="message">error message</small>
+                      </div>
+                      <div class="field">
+                          <input type="password" id="YPass2" name="YPass2" placeholder="confirm Password" required>
+			                		<small class="message">error message</small>
                       </div>
                       <div class="field btn">
                           <div class="btn-layer"></div>
-                          <input type="submit" value="Login">
+                          <input type="submit" value="Signup" >
                       </div>
-                      <div class="signup-link">
-                          Not a member? <a href="{% url 'signup' %}">Signup now</a>
-                      </div>
-
                       {% csrf_token %}
-                   
+                    </form>
                 </div>
               </div>
           </div>

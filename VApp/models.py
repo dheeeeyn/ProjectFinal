@@ -11,7 +11,7 @@ class User(models.Model):
 	YContact = models.CharField(default="", max_length=11)
 	YGender = models.TextField(default="", null=True, choices=GENDER)
 	email= models.TextField(default="", null=True)
-	password= models.TextField(default="", max_length=15, null=True)
+	password1= models.TextField(default="", max_length=15, null=True)
 	
 	def _str_(self):
 		return self.YName
