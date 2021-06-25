@@ -1,0 +1,109 @@
+/* lobster */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+/* raleway */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+/* montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+
+/* lora */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap');
+
+/* Lexend */
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
+
+
+/* Livvic */
+
+@import url('https://fonts.googleapis.com/css2?family=Livvic&family=Lobster&display=swap');
+
+
+/* font face*/
+/* 
+@font-face {
+    font-family: "LexendDeca-Regular";
+    src: url(./assets/Lexend.ttf);
+}
+@font-face{
+  font-family: "Lobster-Regular.ttf";
+  src: url(font/Lobster-Regular.ttf);
+} */
+
+@font-face{
+  font-family: "Raleway-Regular.ttf";
+  src: url(font/Raleway-Regular.ttf);
+}
+
+@font-face{
+  font-family: "Montserrat-Black.ttf";
+  src: url(font/Montserrat-Black.ttf);
+}
+
+
+@font-face{
+  font-family: "Lora-MediumItalic.ttf";
+  src: url(font/Lora-MediumItalic.ttf);
+}
+
+
+/* FONT */
+.nav_title a{
+    font-family: 'Montserrat';
+}
+
+.nav_menu {
+    font-family: 'Raleway';
+}
+
+main .site-title h1{
+font-family: 'Montserrat';
+}
+
+main .site-title h2{
+  font-family: 'raleway';
+}
+
+main .site-title h3{
+  font-family: 'Lora';
+  }
+
+  /* button */
+ main .site-title .btn{
+    font-family: "Livvic";
+    }
+       
+           /*------------- about---------- */
+
+ .heading h2 {
+  font-family: 'Montserrat';
+}
+
+.heading h3 {
+  font-family: 'Montserrat';
+}
+    
+.heading strong {
+  font-family: 'Montserrat';
+    }            
+
+.about .text-content h2{
+  font-family: 'Montserrat';
+}
+
+.about .text-content p, a{
+  font-family: 'Raleway';
+}
+           /*-------x------ about-----x----- */
+
+           /*------------- footer---------- */
+footer h4, a {
+    font-family: 'Raleway';
+}
+footer p {
+  font-family: "Livvic";
+}
+
+footer .contact-form input, textarea{
+  font-family: "Livvic";
+}
